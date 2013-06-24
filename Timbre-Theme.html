@@ -18,10 +18,16 @@
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" href="{RSS}" />
 
+  <!-- CSS Reset -->
+  <link rel='stylesheet' href='http://static.tumblr.com/ubkenek/O6umoqqzn/reset.css' type='text/css'/>
+
   <!-- Search Engine Stuff -->
   {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
   <meta name="author" content="" />
   <meta name="robots" content="all" />
+
+  <!-- Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
   <!-- Modernizr -->
   <script type="text/javascript" src="http://static.tumblr.com/ubkenek/tCOmop3od/modernizr.custom.38277.js"></script>
@@ -32,13 +38,115 @@
     Basics Page Setup
   ========================================================*/
 
+  body,html {
+    background: #faf9f4;
+    font-family: 'Droid Serif', serif;
+    font-size: 16px;
+    color: #7f7f7f;
+  }
 
+  a:link,
+  a:visited {
+    color: #f65700;
+    text-decoration: underline;
+  }
+
+  /* --- Typography --- */
+
+  h1 {
+    font-size: 60px;
+    font-family: 'Droid Serif', serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    color: #073f69;
+  }
+
+  h2 {
+    font-size: 60px;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-family: 'Droid Serif', serif;
+    font-weight: 700;
+    color: #7f7f7f;
+  }
+
+  /* --- Helpers --- */
+
+  .pull-left {
+    float left
+  }
+
+  .pull-right {
+    float right
+  }
+
+  /* --- Structure --- */
+
+  .content-wrapper {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
 
   /*========================================================
     Header
   ========================================================*/
 
+  .page-header {
+    margin: 40px 0;
+    padding: 0 0 50px 0;
+    border-bottom: 2px solid #dddad7;
+  }
 
+  .page-header__title {
+    clear: both;
+  }
+
+  .page-header__navigation{
+    width: 100%;
+  }
+
+  .page-header__navigation__item {
+    width: 43px;
+    height: 43px;
+    display: block;
+    float: right;
+    margin: 0 0 0 10px;
+
+    border: 1px solid #dddad7;
+    border-radius: 3px;
+    cursor: pointer;
+    background-image: url('http://static.tumblr.com/ubkenek/Jahmowbou/icons.png');
+  }
+
+  .page-header__navigation__item--menu {
+    background-position: 9px -6px;
+  }
+
+  .page-header__navigation__item--menu:hover {
+    background-position: -28px -6px;
+    background-color: #f65700;
+  }
+
+  .page-header__navigation__item--search {
+    background-position: -65px -8px;
+  }
+
+  .page-header__navigation__item--search:hover {
+    background-position: -102px -8px;
+    background-color: #f65700;
+  }
+
+  .page-header__search {
+    display: none;
+  }
 
   /*========================================================
     SideBar
@@ -77,6 +185,26 @@
 
 
   /*========================================================
+    Media Queries
+  ========================================================*/
+
+  @media (max-width: 480px) { /* --- @Media Palm --- */
+
+  }
+
+  @media (min-width: 481px) and (max-width: 979px) { /* --- @Media Lap --- */
+
+  }
+
+  @media (min-width: 980px) { /* --- @Media Desktop --- */
+
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { /* --- @Media Retina --- */
+
+  }
+
+  /*========================================================
     Custom CSS
   ========================================================*/
 
@@ -93,227 +221,30 @@
 
 <body>
 
-  <header>
+  <div class="content-wrapper">
 
-    <a href="/" title="{Title}">{Title}</a>
+    <header class="page-header">
 
-    <a href="/archive">Archive</a>
-    <a href="/random">Random</a>
-    <a href="{RSS}" title="RSS Feed">RSS Feed</a>
-    <a href="/mobile" title="View mobile version">Mobile</a>
+      <nav class="page-header__navigation">
+        <ul>
+          <li class="page-header__navigation__item page-header__navigation__item--menu"></li>
+          <li class="page-header__navigation__item page-header__navigation__item--search"></li>
+        </ul>
+        <form class="page-header__search" action="/search" method="get" >
+          <input id="Search" class="SearchBox" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
+        </form>
+      <nav>
 
-    {block:AskEnabled}<a href="/ask" title="Ask a question">{AskLabel}</a>{/block:AskEnabled}
-    {block:SubmissionsEnabled}<a href="/submit" title="{SubmitLabel}">{SubmitLabel}</a>{/block:SubmissionsEnabled}
+      <h1 class="page-header__title" title="{Title}">{Title}</h1>
 
-    <form action="/search" method="get" >
-      <input id="Search" class="SearchBox" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
-    </form>
+    </header>
 
-  </header>
-
-  <section class="wrapper">
-
-    {block:Description}<p>{Description}</p>{/block:Description}
-
-    <div class="posts">
+    <section class="posts">
     {block:Posts}
 
-      {block:Answer}
-      <div class="answer-post">
 
-        <div>{Asker} Asked</div>
-
-        <span class="question">Question {Question}</span>
-        <span class="answer">Answer {Answer}</span>
-
-      </div><!-- End Answer Post -->
-      {/block:Answer}
-
-      {block:Photo}
-      <div class="photo-post">
-
-        {LinkOpenTag}
-          <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
-        {LinkCloseTag}
-
-        {block:Caption
-        <p>{Caption}</p>
-        {/block:Caption}
-
-        {block:Exif}
-        <ol>
-          <li>{block:Camera}Camera: {Camera}{/block:Camera}</li>
-          <li>{block:Aperture}Aperture: {Aperture}{/block:Aperture}</li>
-          <li>{block:Exposure}Exposure: {Exposure}{/block:Exposure}</li>
-          <li>{block:FocalLength}Focal Length: {FocalLength}{/block:FocalLength}</li>
-        </ol><!-- End Camera Exif Info -->
-        {/block:Exif}
-
-      </div><!-- End Photo Post -->
-      {/block:Photo}
-
-      {block:Photoset}
-      <!--  Photoset Post -->
-      <div class="photo-set-post">
-
-        {block:Photos}
-          {block:HighRes}
-          <a href="{PhotoURL-HighRes}">
-            <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
-          </a><!-- End HighRes Photo Set -->
-          {/block:HighRes}
-        {/block:Photos}
-
-        {Photoset-500}
-
-        <p>{Caption}</p>
-
-      </div><!-- End Photoset Post -->
-      {/block:Photoset}
-
-      {block:Text}
-      <div class="text-post">
-
-        {block:Title}<a href="{Permalink}">{Title}</a>{/block:Title}
-
-        <p>{Body}</p>
-
-      </div><!-- End Text Post -->
-      {/block:Text}
-
-      {block:Quote}
-      <div class="quote-post">
-
-        <blockquote>"{Quote}"</blockquote>
-        {block:Source}<p>&#8212; {Source}</p>{/block:Source}
-
-      </div><!-- End Quote Post -->
-      {/block:Quote}
-
-      {block:Link}
-      <div class="link-post">
-
-        <a href="{URL}" {Target}>{Name}</a>
-
-        {block:Description}<p>{Description}</p>{/block:Description}
-      </div><!-- End Link Post -->
-      {/block:Link}
-
-      {block:Chat}
-      <div class="chat-post">
-
-        {block:Title}<a href="{Permalink}">{Title}</a>{/block:Title}
-
-        <ul>
-          {block:Lines}
-          <li class="{Alt} user_{UserNumber}">
-            {block:Label}
-            <span class="label">{Label}</span>
-            {/block:Label}
-              {Line}
-          </li><!-- End Chat Line -->
-          {/block:Lines}
-        </ul><!-- End Chat Block -->
-
-      </div><!-- End Chat Post -->
-      {/block:Chat}
-
-      {block:Audio}
-      <div class="audio-post">
-
-        {block:AudioEmbed}
-          <div class="AudioEmbed">{AudioEmbed-640}</div>
-          {block:Caption}<p>{Caption}</p>{/block:Caption}
-        {/block:AudioEmbed}
-
-        {block:AudioPlayer}
-        {block:Artist}
-        <a href="{Permalink}" title="{Artist} &#8211; {block:TrackName}{TrackName}{/block:TrackName}">{Artist} {block:TrackName}&#8211; {TrackName}{/block:TrackName}</a>
-        <!-- End Audio Post Title / Artist / Track Name -->
-        {/block:Artist}
-
-        {block:AlbumArt}<img src="{AlbumArtURL}" alt="Album Art"/>{/block:AlbumArt}
-
-        {AudioPlayerWhite}
-
-        <p>{block:Caption}{Caption}{/block:Caption}</p>
-        <p>Played {PlayCount} times.</p>
-
-        {/block:AudioPlayer}
-
-      </div><!-- End Audio Post -->
-      {/block:Audio}
-
-      {block:Video}
-        <div>
-          {Video-500}
-          {block:Caption}<p>{Caption}</p>{/block:Caption}
-        </div>
-      {/block:Video}
-
-      <div class="post-footer">
-        <ol>
-          {block:Date}
-          <li>
-            <a href="{Permalink}" title="Date Posted">
-              {DayOfMonth}{DayOfMonthSuffix} {Month} {Year}
-            </a><!-- End Date Posted Link -->
-          </li><!-- End Date Posted Wrapper -->
-          {/block:Date}
-          {block:RebloggedFrom}
-          <li>
-            <a href="{ReblogParentURL}" title="{ReblogParentTitle}">
-              Reblogged From {ReblogParentName}
-            </a><!-- End Reblog From Link -->
-          </li><!-- End Rebloged From Wrapper -->
-          {/block:RebloggedFrom}
-          {block:NoteCount}
-          <li>
-            <a href="{Permalink}" title="Notes">
-              Notes: {NoteCount}
-            </a><!-- End Notes Link -->
-          </li><!-- End Notes Wrapper -->
-          {/block:NoteCount}
-          {block:HasTags}
-          <div class="posts-tags">
-            {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
-          </div><!-- End Post Tags -->
-          {/block:HasTags}
-        </ol><!-- End Post Footer -->
-      </div><!-- End Post Footer Wrapper -->
-
-      {block:IfDisqusShortname}
-      <div id="qisqus">
-        <script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div>
-        <script type="text/javascript">
-        /**
-          * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread]
-        */
-        (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
-        <a class="DisqusCredit" href="http://disqus.com">blog comments powered by <span class="logo-disqus">Disqus</span></a>
-        {/block:Permalink}<script type="text/javascript">
-        var disqus_shortname = '{text:Disqus Shortname}';
-        (function () {
-          var s = document.createElement('script'); s.async = true;
-          s.src = 'http://disqus.com/forums/{text:Disqus Shortname}/count.js';
-          (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-        }());
-        </script>
-      </div><!-- End Disqus -->
-      {/block:IfDisqusShortname}
-      <!-- End Footer -->
-
-      {PostNotes}
-
-      {/block:Posts}
-      </div><!-- End Posts -->
-    </div><!-- End Body Content -->
+    {/block:Posts}
+    </section><!-- End Posts -->
 
     <div class="pagination">
       <div class="totle-pages">
@@ -333,9 +264,9 @@
       {/block:PreviousPage}
     </div><!-- End Pagination -->
 
-    <div class="copyright">This blog is powered by <a href="http://tumblr.com" title="Tumblr">Tumblr</a> and designed by <a href="http://synthmedia.co.uk" title="Synth Media">Synth Media</a>.</div>
-
-  </div><!-- End Page Wrapper -->
+    <footer class="page-footer">
+      <div class="copyright"> Copyright © 2013. Designed by <a href="http://synthmedia.co.uk">Synth Media</a>. Built in Bristol, England.</div>
+    </footer>
 
   <!-- JavaScript -->
   <script type="text/javascript" src="http://static.tumblr.com/ubkenek/OZXmop3mw/jquery-1.10.1.min.js"></script>
