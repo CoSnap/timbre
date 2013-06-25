@@ -8,7 +8,7 @@
   <!-- Meta Tags -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=1260, initial-scale=0.1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 
   <title>{Title}</title>
 
@@ -96,6 +96,8 @@
   }
 
   .content {
+    position: relative;
+    z-index: 3;
     min-height: 1000px;
     background: #faf9f4;
     -webkit-transition: 0.33s cubic-bezier(0.694, 0.0482, 0.335, 1), top 0.6s cubic-bezier(0.694, 0.0482, 0.335, 1), opacity 0.5s cubic-bezier(0.694, 0.0482, 0.335, 1);
@@ -154,7 +156,7 @@
   }
 
   .nav-open {
-    -webkit-transform: translate3d(-300px, 0, 0);
+    -webkit-transform: translate3d(-350px, 0, 0);
     border-right: 4px solid #f1eeea;
   }
 
@@ -163,12 +165,42 @@
   }
 
 
-
   /*========================================================
     SideBar
   ========================================================*/
 
+  .side-bar {
+    width: 290px;
+    top: 0;
+    right:0;
+    z-index: 2;
+    position: absolute;
+    padding: 50px 30px 30px 30px;
+  }
 
+  .portrait {
+    border-radius: 50%;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto;
+    border: 6px solid white;
+  }
+
+  .description {
+    margin: 0 0 40px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .side-bar-title {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Droid Sans', sans-serif;
+    color: #f65700;
+    font-weight: 700;
+    margin: 40px 0;
+  }
 
   /*========================================================
     Page Content
@@ -232,6 +264,23 @@
 </head><!-- End Head -->
 
 <body>
+  <div class="side-bar">
+
+    <img class="portrait" src="{PortraitURL-128}" />
+
+    <p class="side-bar-title">{Title}</p>
+
+    {block:Description}
+      <p class="description">{Description}</p>
+    {/block:Description}
+
+    <nav class="side-bar__nav-wrapper">
+      <ul class="side-bar__nav">
+        <li><a href="#">Home</a></li>
+      <ul>
+    </nav>
+
+  </div>
   <div class="content">
     <div class="content-wrapper">
 
