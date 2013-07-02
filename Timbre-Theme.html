@@ -43,6 +43,7 @@
     font-size: 16px;
     color: #7f7f7f;
     background: #f6f3ef;
+    line-height: 24px
   }
 
   a:link,
@@ -60,21 +61,48 @@
     margin: 0;
     padding: 0;
     color: #073f69;
+    line-height: 70px;
   }
 
   h2 {
-    font-size: 60px;
     font-family: 'Droid Sans', sans-serif;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
+    font-weight: 300;
+    font-size: 42px;
+    line-height: 54px;
+    margin: 0px 0px 60px 0px;
+    color: #073f69;
   }
 
   h3 {
     font-size: 20px;
     font-family: 'Droid Serif', serif;
     font-weight: 700;
-    color: #7f7f7f;
+    color: #073f69;
+  }
+
+  a.post-title {
+    color: #073f69;
+    text-decoration: none;
+  }
+
+  strong, p {
+    font-size: 16px;
+    line-height: 28px;
+    margin-bottom: 20px;
+  }
+
+  strong {
+    font-family: 'Droid Serif', serif;
+    color: #4d4d4d;
+    font-weight: 500;
+    display: block;
+  }
+
+  blockquote {
+    font-family: 'Droid Sans', sans;
+    color: #4d4d4d;
+    text-indent: 20px;
+    margin-bottom: 24px;
   }
 
   /* --- Helpers --- */
@@ -101,6 +129,11 @@
     min-height: 1000px;
     background: #faf9f4;
     -webkit-transition: 0.33s cubic-bezier(0.694, 0.0482, 0.335, 1), top 0.6s cubic-bezier(0.694, 0.0482, 0.335, 1), opacity 0.5s cubic-bezier(0.694, 0.0482, 0.335, 1);
+  }
+
+  #tumblr_controls{
+    top: auto !important;
+    bottom: 0 !important;
   }
 
   /*========================================================
@@ -130,7 +163,7 @@
     border: 1px solid #dddad7;
     border-radius: 3px;
     cursor: pointer;
-    background-image: url('http://static.tumblr.com/ubkenek/Jahmowbou/icons.png');
+    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
   }
 
   .page-header__navigation__item--menu {
@@ -164,19 +197,118 @@
     -webkit-transform: translate3d(-0px, 0, 0);
   }
 
+ /* --- Top Bar --- */
+
+  .top-bar {
+    width: 100%;
+    height: 53px;
+    background: #faf9f4;
+    position: fixed;
+    top: -53px;
+    border-bottom: 1px solid #ebe9e5;
+    box-shadow: 0 3px 0 rgba(245,244,239,0.8);
+    z-index: 5;
+    -webkit-transition: 0.33s cubic-bezier(0.694, 0.0482, 0.335, 1), top 0.6s cubic-bezier(0.694, 0.0482, 0.335, 1), opacity 0.5s cubic-bezier(0.694, 0.0482, 0.335, 1);
+  }
+
+  .top-bar__title {
+    color: #073f69;
+    font-size: 19px;
+    margin: 11px 0;
+    float: left;
+  }
+
+  .top-bar__icon {
+    height: 33px;
+    width: 33px;
+    float: right;
+    margin: 8px 0 0 5px;
+    border-radius: 3px;
+    border: 1px solid #ebe9e5;
+    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+  }
+
+  .top-bar__icon--random {
+    background-position: 7px -51px;
+  }
+
+  a.top-bar__icon--random:hover {
+    background-color: #f65700;
+    background-position: -32px -51px;
+  }
+
+  .top-bar__icon--archive {
+    background-position: -70px -53px;
+  }
+
+  a.top-bar__icon--archive:hover {
+    background-color: #f65700;
+    background-position: -104px -53px;
+  }
+
+  .top-bar__icon--search {
+    background-position: -141px -53px;
+  }
+
+  a.top-bar__icon--search:hover {
+    background-color: #f65700;
+    background-position: -174px -53px;
+  }
+
+  .top-bar__icon--menu {
+    background-position: -209px -53px;
+  }
+
+  a.top-bar__icon--menu:hover {
+    background-color: #f65700;
+    background-position: -241px -53px;
+  }
 
   /*========================================================
     SideBar
   ========================================================*/
 
   .side-bar {
-    width: 290px;
+    width: 350px;
     top: 0;
     right:0;
     z-index: 2;
     position: absolute;
-    padding: 50px 30px 30px 30px;
+    padding: 50px 0px 30px;
   }
+
+  .side-bar__nav{
+    border-bottom: #dddad7 1px solid ;
+  }
+
+  .side-bar__nav a {
+    font-family: 'Droid Sans', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 15px 30px 15px 30px;
+    border-top: #dddad7 1px solid;
+    display: block;
+    width: 290px;
+    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+    background-repeat: no-repeat;
+    background-position-x: 290px;
+    background-position-y: -146px;
+    -moz-transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+    transition-timing-function: ease;
+  }
+
+  .side-bar__nav a:hover {
+    background-color: #f65700;
+    color: #ffffff;
+    text-decoration: none;
+    background-position-x: 270px;
+    background-position-y: -146px;
+    border-top: #f65700 1px solid;
+  }
+
 
   .portrait {
     border-radius: 50%;
@@ -187,19 +319,18 @@
   }
 
   .description {
-    margin: 0 0 40px 0;
+    margin: 0 30px 40px 30px;
     font-size: 14px;
     line-height: 1.6;
   }
 
   .side-bar-title {
-    width: 100%;
     text-align: center;
     font-size: 20px;
     font-family: 'Droid Sans', sans-serif;
-    color: #f65700;
+    color: #073f69;
     font-weight: 700;
-    margin: 40px 0;
+    margin: 40px 30px;
   }
 
   /*========================================================
@@ -207,16 +338,172 @@
   ========================================================*/
 
 
+  .copy ul {
+    padding-bottom: 24px;
+  }
+
+  .copy li {
+    line-height: 30px;
+    text-indent: 20px;
+    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+    background-position: 7px -192px;
+    background-repeat: no-repeat;
+  }
+  
+  .text-post, 
+  .post-photo, 
+  .photo-set-post, 
+  .quote-post, 
+  .chat-post, 
+  .audio-post, 
+  .link-post{
+    padding: 60px 0;
+    border-bottom: 2px solid #dddad7;
+    overflow: hidden;
+  }
+
 
   /*========================================================
     Notes
   ========================================================*/
 
 
+  /*========================================================
+    Meta
+  ========================================================*/
+
+
+  .meta-data{
+    font-size: 13px;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: 700;
+    width: 280px;
+    float: left;
+  }
+
+  .meta-data li{
+    margin-bottom: 10px;  
+  }
+
+  a.notes, a.post-tag, a.reblogs, a.date{
+    color: #9c9c9b;
+    text-decoration: none;
+  }
+
+  a.notes, a.reblogs, a.date, .tags-list{
+    padding-left: 24px;
+    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+    background-repeat: no-repeat;
+  }
+
+  .tags-list{
+    background-position: -300px -60px;
+    height: 24px;
+  }
+
+  a.post-tag{
+    float: left;
+    margin-right: 4px;
+  }
+
+  a.post-tag:after{ 
+    content:",";
+  }
+
+  a.post-tag:last-child:after{
+    content:"";
+  }
+
+  a.notes{
+    background-position: -300px 1px;
+  }
+
+  a.reblogs{
+    background-position: -300px 0px;
+  }
+
+  a.date{
+    background-position: -300px -32px;
+  }
+
+  .meta-data a:hover{
+    color: #f65700;
+    text-decoration: underline;
+  }
+
 
   /*========================================================
     Footer
   ========================================================*/
+
+  .copyright{
+    padding-bottom: 60px;
+    margin-top: 20px;
+  }
+
+  a.next-page, a.previous-page{
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 15px;
+    height: 20px;
+    display: block;
+    border: 1px solid #dddad7;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #9c9c9b;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+  }
+
+  a.next-page{
+    width: 100px;
+    padding: 10px 15px;
+    float: right;
+    background-position: -15px -112px;
+  }
+
+  a.next-page:hover{
+    color: #f65700;
+    background-position: 105px -112px;
+  }
+
+  a.previous-page{
+    width: 70px;
+    padding: 10px 15px 10px 45px;
+    float: left;
+    background-position: -225px -149px;
+  }
+
+  a.previous-page:hover{
+    color: #f65700;
+    background-position: -225px -112px;
+  }
+
+  .pagination {
+    height: 90px;
+    border-bottom: 2px solid #dddad7;
+    text-align: center;
+  }
+
+  .previous-page-section{
+    float: left;
+    display: inline-block;
+    text-align: right;
+    margin-top: 24px;
+  }
+
+  .total-pages{
+    display: inline-block;
+    position: absolute;
+    line-height: 88px;
+  }
+
+  .next-page-section{
+    float: right;
+    display: inline-block;
+    text-align: left;
+    margin-top: 24px;
+  }
 
 
 
@@ -236,16 +523,27 @@
     Media Queries
   ========================================================*/
 
-  @media (max-width: 480px) { /* --- @Media Palm --- */
+  @media (max-width: 799px) { /* --- @Media Palm --- */
 
   }
 
-  @media (min-width: 481px) and (max-width: 979px) { /* --- @Media Lap --- */
+  @media (min-width: 800px) and (max-width: 1179px) { /* --- @Media Lap --- */
 
+  .copy{
+    max-width: 480px;
+    float: right;
+    display: block;
+  }
   }
 
-  @media (min-width: 980px) { /* --- @Media Desktop --- */
-
+  @media (min-width: 1180px) { /* --- @Media Desktop --- */
+    
+  .copy{
+    max-width: 480px;
+    margin-right: 180px;
+    float: right;
+    display: block;
+  }
   }
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { /* --- @Media Retina --- */
@@ -263,11 +561,10 @@
 
 </head><!-- End Head -->
 
+
 <body>
   <div class="side-bar">
-
     <img class="portrait" src="{PortraitURL-128}" />
-
     <p class="side-bar-title">{Title}</p>
 
     {block:Description}
@@ -277,10 +574,28 @@
     <nav class="side-bar__nav-wrapper">
       <ul class="side-bar__nav">
         <li><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
       <ul>
     </nav>
 
+    <p class="side-bar-title">Recent Tweets</p>
+
+    <p class="description">
+      <a href="http://www.synthmedia.co.uk/">@igor_h_stravinsky</a> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+    </p>
+
   </div>
+
+  <nav class="top-bar">
+    <div class="content-wrapper">
+      <p class="top-bar__title">{Title}</p>
+      <a class="top-bar__icon top-bar__icon--menu" href="#"></a>
+      <a class="top-bar__icon top-bar__icon--search" href="#"></a>
+      <a class="top-bar__icon top-bar__icon--archive" href="/archive"></a>
+      <a class="top-bar__icon top-bar__icon--random" href="/random"></a>
+    </div>
+  </nav>
+
   <div class="content">
     <div class="content-wrapper">
 
@@ -300,29 +615,197 @@
 
       </header>
 
+
+
+      <!-- Start Posts -->
+
+
+
       <section class="posts">
       {block:Posts}
 
+  <!--======================================================
+    Text Post
+  =======================================================-->
+
+        {block:Text}
+          <div class="text-post">
+
+
+            <div class="copy">
+              {block:Title}<h2><a class="post-title" href="{Permalink}">{Title}</a></h2>{/block:Title}
+              <p>{Body}</p>
+            </div>
+            
+            <div class="meta-data">
+
+              <ul>
+                {block:Date}
+                <li>
+                  <a class="date" href="{Permalink}" title="Date Posted">
+                    {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                  </a><!-- End Date Posted Link -->
+                </li><!-- End Date Posted Wrapper -->
+                {/block:Date}
+                {block:RebloggedFrom}
+                <li>
+                  <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                    Reblogged From {ReblogParentName}
+                  </a><!-- End Reblog From Link -->
+                </li><!-- End Rebloged From Wrapper -->
+                {/block:RebloggedFrom}
+                {block:NoteCount}
+                <li>
+                  <a class="notes" href="{Permalink}" title="Notes">
+                    {NoteCount} likes
+                  </a><!-- End Notes Link -->
+                </li><!-- End Notes Wrapper -->
+                {/block:NoteCount}
+
+                {block:HasTags}
+                <div class="tags-list">
+                  {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+                </div><!-- End Post Tags -->
+                {/block:HasTags}
+              </ol><!-- End Post Footer -->
+            </div><!-- End Post Footer Wrapper -->
+          </div><!-- End Text Post -->
+        {/block:Text}
+
+  <!--======================================================
+    Photo Post
+  =======================================================-->
+
+        {block:Photo}
+          <li class="post-photo">
+              <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
+                {block:Caption}
+                  <div class="caption">{Caption}</div>
+                {/block:Caption}
+          </li><!-- End Text Post -->
+        {/block:Photo}
+
+  <!--======================================================
+    Photoset
+  =======================================================-->
+
+        {block:Photoset}
+        <!--  Photoset Post -->
+        <div class="photo-set-post">
+          {block:Photos}
+            {block:HighRes}
+            <a href="{PhotoURL-HighRes}">
+              <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+            </a><!-- End HighRes Photo Set -->
+            {/block:HighRes}
+          {/block:Photos}
+          {Photoset-500}
+          <p>{Caption}</p>
+        </div><!-- End Photoset Post -->
+        {/block:Photoset}
+
+  <!--======================================================
+    Quote
+  =======================================================-->
+
+        {block:Quote}
+        <div class="quote-post">
+          <blockquote>"{Quote}"</blockquote>
+          {block:Source}<p>&#8212; {Source}</p>{/block:Source}
+        </div><!-- End Quote Post -->
+        {/block:Quote}
+
+  <!--======================================================
+    Link
+  =======================================================-->
+
+        {block:Link}
+        <div class="link-post">
+          <a href="{URL}" {Target}>{Name}</a>
+          {block:Description}<p>{Description}</p>{/block:Description}
+        </div><!-- End Link Post -->
+        {/block:Link}
+
+  <!--======================================================
+    Chat
+  =======================================================-->
+
+        {block:Chat}
+        <div class="chat-post">
+          {block:Title}<a href="{Permalink}">{Title}</a>{/block:Title}
+          <ul>
+            {block:Lines}
+            <li class="{Alt} user_{UserNumber}">
+              {block:Label}
+              <span class="label">{Label}</span>
+              {/block:Label}
+                {Line}
+            </li><!-- End Chat Line -->
+            {/block:Lines}
+          </ul><!-- End Chat Block -->
+        </div><!-- End Chat Post -->
+        {/block:Chat}
+
+  <!--======================================================
+    Audio
+  =======================================================-->
+
+        {block:Audio}
+        <div class="audio-post">
+          {block:AudioEmbed}
+          <div class="copy">
+            <div class="AudioEmbed">{AudioEmbed-640}</div>
+            {block:Caption}<p>{Caption}</p>{/block:Caption}
+            {/block:AudioEmbed}
+            {block:AudioPlayer}
+            {block:Artist}
+            <h2><a class="post-title" href="{Permalink}" title="{Artist} &#8211; {block:TrackName}{TrackName}{/block:TrackName}">{Artist} {block:TrackName}&#8211; {TrackName}{/block:TrackName}</a></h2>
+            <!-- End Audio Post Title / Artist / Track Name -->
+            {/block:Artist}
+            {block:AlbumArt}<img src="{AlbumArtURL}" alt="Album Art"/>{/block:AlbumArt}
+            {AudioPlayerWhite}
+            <p>{block:Caption}{Caption}{/block:Caption}</p>
+            <p>Played {PlayCount} times.</p>
+            {/block:AudioPlayer}
+        </div>
+        </div><!-- End Audio Post -->
+        {/block:Audio}
+
+  <!--======================================================
+    Video
+  =======================================================-->
+
+        {block:Video}
+          <div>
+            {Video-500}
+            {block:Caption}<p>{Caption}</p>{/block:Caption}
+          </div>
+        {/block:Video}
+
 
       {/block:Posts}
-      </section><!-- End Posts -->
+      </section>
+      <!-- End Posts -->
+
+
 
       <div class="pagination">
-        <div class="totle-pages">
-          Page {CurrentPage} of {TotalPages}
-        </div><!-- End Totle Pages -->
+          {block:PreviousPage}
+          <div class="previous-page-section">
+          <a class="previous-page" href="{PreviousPage}" title="Go to the previous page">Back Page</a>
+        </div><!-- End Back Page Button -->
+        {/block:PreviousPage}
+
+          <div class="total-pages">
+            Page {CurrentPage} of {TotalPages}
+          </div><!-- End Total Pages -->
 
         {block:NextPage}
-        <div class="next-page">
-          <a href="{NextPage}" title="Go to the next page">Next</a>
+        <div class="next-page-section">
+          <a class="next-page" href="{NextPage}" title="Go to the next page">Next Page</a>
         </div><!-- End Next Page Button -->
         {/block:NextPage}
 
-        {block:PreviousPage}
-        <div class="previous-page">
-          <a href="{PreviousPage}" title="Go to the previous page">Back</a>
-        </div><!-- End Back Page Button -->
-        {/block:PreviousPage}
       </div><!-- End Pagination -->
 
       <footer class="page-footer">
@@ -346,6 +829,28 @@
         primaryNav.removeClass('nav-closed');
       }
       e.preventDefault();
+    });
+
+    $('.top-bar__icon--menu').on('click', function(e){
+      $('html, body').animate( { scrollTop:(0) }, 'fast', function() {
+        primaryNav.removeClass('nav-closed');
+        primaryNav.addClass('nav-open');
+      });
+
+      e.preventDefault();
+    });
+
+    $(window).scroll(function() {
+      if ( $(window).scrollTop() > 100 ) {
+        $('.top-bar').css( 'top', '0px' );
+        primaryNav.removeClass('nav-open');
+        primaryNav.addClass('nav-closed');
+      }
+
+      if ( $(window).scrollTop() < 100 ) {
+        $('.top-bar').css( 'top', '-53px' );
+      }
+
     });
   </script>
 
