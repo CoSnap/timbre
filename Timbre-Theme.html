@@ -26,11 +26,18 @@
   <meta name="author" content="" />
   <meta name="robots" content="all" />
 
+  <!-- Facebook Meta -->
+  <meta property="og:title" content="{block:PostTitle}{PostTitle}{/block:PostTitle}"/>
+  <meta property="og:site_name" content="{Title}"/>
+  <meta property="og:image" content="{PortraitURL-128}"/>
+
   <!-- Fonts -->
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
   <!-- Modernizr -->
   <script type="text/javascript" src="http://static.tumblr.com/ubkenek/tCOmop3od/modernizr.custom.38277.js"></script>
+
+  <meta name="text:Disqus Shortname" content=""/>
 
   <style type="text/css">
 
@@ -61,7 +68,7 @@
     margin: 0;
     padding: 0;
     color: #073f69;
-    line-height: 70px;
+    line-height: 53px;
   }
 
   h2 {
@@ -85,6 +92,10 @@
     text-decoration: none;
   }
 
+  a.post-title:hover {
+    border-bottom: 2px solid #073f69;
+  }
+
   strong, p {
     font-size: 16px;
     line-height: 28px;
@@ -101,11 +112,24 @@
   blockquote {
     font-family: 'Droid Sans', sans;
     color: #4d4d4d;
-    text-indent: 20px;
+    padding: 20px;
     margin-bottom: 24px;
   }
 
   /* --- Helpers --- */
+
+  .clearfix:before,.clearfix:after{
+    content:" ";
+    display:table
+  }
+
+  .clearfix:after{
+    clear:both
+  }
+
+  .clearfix{
+    *zoom:1
+  }
 
   .pull-left {
     float left
@@ -128,7 +152,7 @@
     z-index: 3;
     min-height: 1000px;
     background: #faf9f4;
-    -webkit-transition: 0.33s cubic-bezier(0.694, 0.0482, 0.335, 1), top 0.6s cubic-bezier(0.694, 0.0482, 0.335, 1), opacity 0.5s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -webkit-transition: 0.33s cubic-bezier(0.694, 0.0482, 0.335, 1);
   }
 
   #tumblr_controls{
@@ -145,12 +169,26 @@
     border-bottom: 2px solid #dddad7;
   }
 
+  a.page-header__title__link {
+    display: block;
+    float: left;
+    border-bottom: 3px solid transparent;
+    text-decoration: none;
+  }
+
+  .page-header__title__link:hover {
+    border-bottom: 3px solid #073f69;
+    text-decoration: none;
+  }
+
   .page-header__title {
+    max-width: 1069px;
     clear: both;
   }
 
   .page-header__navigation{
-    width: 100%;
+    float: right;
+    margin: 3px 0 0 0;
   }
 
   .page-header__navigation__item {
@@ -171,6 +209,11 @@
   }
 
   .page-header__navigation__item--menu:hover {
+    background-position: -28px -6px;
+    background-color: #f65700;
+  }
+
+  .page-header__navigation__item--menu--active {
     background-position: -28px -6px;
     background-color: #f65700;
   }
@@ -208,14 +251,24 @@
     border-bottom: 1px solid #ebe9e5;
     box-shadow: 0 3px 0 rgba(245,244,239,0.8);
     z-index: 5;
-    -webkit-transition: 0.33s cubic-bezier(0.694, 0.0482, 0.335, 1), top 0.6s cubic-bezier(0.694, 0.0482, 0.335, 1), opacity 0.5s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -webkit-transition: 0.33s cubic-bezier(0.694, 0.0482, 0.335, 1);
   }
 
-  .top-bar__title {
+  .top-bar__title:link,
+  .top-bar__title:visited {
     color: #073f69;
     font-size: 19px;
-    margin: 11px 0;
+    margin: 13px 0;
     float: left;
+    text-decoration: none;
+  }
+
+  .top-bar__title:hover {
+    border-bottom: 2px solid #073f69;
+  }
+
+  .top-bar__title-link:hover {
+    border-bottom: 1px solid #073f69;
   }
 
   .top-bar__icon {
@@ -309,7 +362,6 @@
     border-top: #f65700 1px solid;
   }
 
-
   .portrait {
     border-radius: 50%;
     overflow: hidden;
@@ -337,31 +389,148 @@
     Page Content
   ========================================================*/
 
-
   .copy ul {
     padding-bottom: 24px;
   }
 
   .copy li {
     line-height: 30px;
-    text-indent: 20px;
+    padding: 0 0 0 30px;
     background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
     background-position: 7px -192px;
     background-repeat: no-repeat;
   }
-  
-  .text-post, 
-  .post-photo, 
-  .photo-set-post, 
-  .quote-post, 
-  .chat-post, 
-  .audio-post, 
-  .link-post{
+
+  .text-post,
+  .post-photo,
+  .photo-set-post,
+  .quote-post,
+  .chat-post,
+  .audio-post,
+  .link-post,
+  .video-post {
     padding: 60px 0;
     border-bottom: 2px solid #dddad7;
     overflow: hidden;
   }
 
+  .caption {
+    width: 500px;
+  }
+
+  .copy a:hover {
+    text-decoration: none;
+  }
+
+  .reblog_button {
+    display: block;
+    width: auto !important;
+    height: 23px;
+    float: left;
+    clear: both;
+    margin: 10px 0 0 0;
+    padding: 3px 12px;
+    border: 1px solid #e1e0dc;
+    border-radius: 3px;
+  }
+
+  /* Photo Post */
+
+  .heigh-res-hero {
+    margin: 0 0 20px 0;
+  }
+
+  /* Quote Post */
+
+  .big-quote {
+    padding: 0px;
+    font-size: 30px;
+    line-height: 1.3;
+  }
+
+  /* Chat Post */
+
+  .even .label,
+  .odd .label {
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+  }
+
+  .odd .label {
+    color: #073f69;
+  }
+
+  .even .label {
+    color: #6388a4;
+  }
+
+  .chat-copy li {
+    padding: 10px;
+    background: none;
+    border-bottom: 1px solid #e1e0dc;
+    text-indent: none;
+  }
+
+  .chat-copy li:first-of-type {
+    border-top: 1px solid #e1e0dc;
+  }
+
+  /* Link Post */
+
+  .link-post__link:link {
+    text-decoration: none;
+  }
+
+  .link-post__link:hover {
+    border-bottom: 2px solid #f65700;
+  }
+
+  /* Audio Post */
+
+  .soundcloud_audio_player {
+    width: 100%;
+  }
+
+  .tumblr_audio_player {
+    width: 100%;
+    height: 50px;
+    margin: 0;
+  }
+
+  .audio-post-title {
+    margin: 0px;
+    line-height: 50px;
+  }
+
+  .audio-post-title a {
+    color: #073f69;
+    text-decoration: none;
+  }
+
+  .audio-post-title a:hover {
+    border-bottom: 2px solid #073f69;
+  }
+
+  .album-art {
+    margin: 0 0 20px 0;
+  }
+
+  .audio-hero {
+    margin: 0 auto 45px auto;
+    width: 100%;
+    float: left;
+  }
+
+  .play-count {
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 12px;
+  }
+
+  .spotify_audio_player {
+    width: 500px;
+    margin-right: 180px;
+    float: right;
+  }
 
   /*========================================================
     Notes
@@ -372,17 +541,17 @@
     Meta
   ========================================================*/
 
-
   .meta-data{
     font-size: 13px;
     font-family: 'Droid Sans', sans-serif;
     font-weight: 700;
     width: 280px;
     float: left;
+    margin: 0 0 40px 0;
   }
 
   .meta-data li{
-    margin-bottom: 10px;  
+    margin-bottom: 10px;
   }
 
   a.notes, a.post-tag, a.reblogs, a.date{
@@ -392,13 +561,14 @@
 
   a.notes, a.reblogs, a.date, .tags-list{
     padding-left: 24px;
-    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+    background-image: url('http://static.tumblr.com/ubkenek/k7wmpbeim/icons.png');
     background-repeat: no-repeat;
   }
 
   .tags-list{
     background-position: -300px -60px;
     height: 24px;
+    margin-top: 10px;
   }
 
   a.post-tag{
@@ -406,7 +576,7 @@
     margin-right: 4px;
   }
 
-  a.post-tag:after{ 
+  a.post-tag:after{
     content:",";
   }
 
@@ -419,7 +589,7 @@
   }
 
   a.reblogs{
-    background-position: -300px 0px;
+    background-position: -304px -155px;
   }
 
   a.date{
@@ -431,17 +601,162 @@
     text-decoration: underline;
   }
 
+  .meta-data li:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .social-button {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .twitter-share-button,
+  .fb-like {
+    clear: both;
+    float: left;
+  }
+
+  .short-link-button-wrapper {
+    position: relative;
+    float: left;
+    clear: both;
+  }
+
+  .short-link {
+    display: block;
+    height: 23px;
+    float: left;
+    clear: both;
+    margin: 10px 0 0 0;
+    padding: 3px 12px 3px 36px;
+    border: 1px solid #e1e0dc;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #9c9c9b;
+    cursor: pointer;
+    background: url('http://static.tumblr.com/ubkenek/bcfmpgyfk/icons.png') no-repeat 3px -88px;
+  }
+
+  .short-link:hover {
+    background: #f65700 url('http://static.tumblr.com/ubkenek/bcfmpgyfk/icons.png') no-repeat -292px -117px;
+    border: 1px solid #f65700;
+    color: #faf9f4;
+  }
+
+  .reblog_button:hover {
+    background: #f65700;
+    border: 1px solid #f65700;
+  }
+
+  .reblog_button:hover:after {
+    color: #faf9f4;
+  }
+
+  .reblog_button svg {
+    width: 13px;
+    fill: #5b5b5b;
+    float: left;
+    margin: 0 10px 0 0;
+  }
+
+  .reblog_button:hover > svg {
+    fill: #faf9f4;
+  }
+
+  .reblog_button:after {
+    content: 'Reblog';
+    float: left;
+    margin: -2px 0 0 0;
+    font-size: 12px;
+    color: #9c9c9b
+  }
+
+  .short-link-dropdown {
+    position: absolute;
+    top: 42px;
+    left: 10px;
+    border: 1px solid #e1e0dc;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: white;
+    display: none;
+  }
+
+  .short-link-dropdown input {
+    width: 76px;
+    background: none;
+    border: none;
+    padding: 5px;
+  }
+
+  .short-link-dropdown-arrow {
+    width: 7px;
+    height: 4px;
+    display: block;
+    margin: -6px 0 2px 0;
+    background: url('http://static.tumblr.com/ubkenek/ZgUmpgzo3/short-link-dropdown-arrow.png');
+  }
 
   /*========================================================
     Footer
   ========================================================*/
 
-  .copyright{
+  .page-footer {
+    font-family: 'Droid Sans', sans-serif;
+    font-size:  12px;
+  }
+
+  .copyright {
     padding-bottom: 60px;
+  }
+
+  .footer-links {
     margin-top: 20px;
   }
 
-  a.next-page, a.previous-page{
+  .copyright a:hover,
+  .footer-links a:hover {
+    text-decoration: none;
+  }
+
+  .post-notes .notes {
+    font-family: 'Droid Sans', sans-serif;
+    list-style: none;
+    margin-top: 5px;
+    padding: 0;
+    border-bottom: 2px solid #dddad7;
+    font-size: 13px;
+  }
+
+  .post-notes .action {
+    vertical-align: 4px;
+  }
+
+  .post-notes .note {
+    border-bottom: 1px solid #dddad7;
+    margin: 0 0 5px 0;
+  }
+
+  .post-notes .note:last-of-type {
+    border-bottom: none;
+    margin: 0 ;
+  }
+
+  .post-notes a:hover {
+    text-decoration: none;
+  }
+
+  .post-notes img {
+    display: none;
+  }
+
+  /*========================================================
+    Pagination
+  ========================================================*/
+
+  a.next-page, a.previous-page {
     font-family: 'Droid Sans', sans-serif;
     font-size: 15px;
     height: 20px;
@@ -455,26 +770,26 @@
     background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
   }
 
-  a.next-page{
-    width: 100px;
-    padding: 10px 15px;
+  a.next-page {
+    width: 70px;
+    padding: 10px 45px 13px 15px;
     float: right;
     background-position: -15px -112px;
   }
 
-  a.next-page:hover{
+  a.next-page:hover {
     color: #f65700;
     background-position: 105px -112px;
   }
 
-  a.previous-page{
+  a.previous-page {
     width: 70px;
-    padding: 10px 15px 10px 45px;
+    padding: 10px 15px 13px 45px;
     float: left;
     background-position: -225px -149px;
   }
 
-  a.previous-page:hover{
+  a.previous-page:hover {
     color: #f65700;
     background-position: -225px -112px;
   }
@@ -483,41 +798,41 @@
     height: 90px;
     border-bottom: 2px solid #dddad7;
     text-align: center;
+    position: relative;
   }
 
-  .previous-page-section{
-    float: left;
-    display: inline-block;
-    text-align: right;
-    margin-top: 24px;
-  }
-
-  .total-pages{
-    display: inline-block;
+  .previous-page-section {
     position: absolute;
-    line-height: 88px;
+    left: 0;
+    top: 24px;
   }
 
-  .next-page-section{
-    float: right;
+  .total-pages {
     display: inline-block;
-    text-align: left;
-    margin-top: 24px;
+    margin: 35px 0;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 15px;
   }
 
-
-
-  /*========================================================
-    Pagination
-  ========================================================*/
-
-
+  .next-page-section {
+    position: absolute;
+    right: 0;
+    top: 24px;
+  }
 
   /*========================================================
     Disqus
   ========================================================*/
 
+  .qisqus {
+    margin: 20px 0 0 0;
+    padding: 0 0 5px 0;
+    border-bottom: 2px solid #dddad7;
+  }
 
+  .DisqusCredit {
+    display: none;
+  }
 
   /*========================================================
     Media Queries
@@ -528,22 +843,20 @@
   }
 
   @media (min-width: 800px) and (max-width: 1179px) { /* --- @Media Lap --- */
-
-  .copy{
-    max-width: 480px;
-    float: right;
-    display: block;
-  }
+    .copy{
+      max-width: 500px;
+      float: right;
+      display: block;
+    }
   }
 
   @media (min-width: 1180px) { /* --- @Media Desktop --- */
-    
-  .copy{
-    max-width: 480px;
-    margin-right: 180px;
-    float: right;
-    display: block;
-  }
+    .copy{
+      width: 500px;
+      margin-right: 180px;
+      float: right;
+      display: block;
+    }
   }
 
   @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { /* --- @Media Retina --- */
@@ -561,8 +874,19 @@
 
 </head><!-- End Head -->
 
-
 <body>
+
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=160791944108268";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
   <div class="side-bar">
     <img class="portrait" src="{PortraitURL-128}" />
     <p class="side-bar-title">{Title}</p>
@@ -573,22 +897,21 @@
 
     <nav class="side-bar__nav-wrapper">
       <ul class="side-bar__nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/random">Random Post</a></li>
+        <li><a href="/rss">RSS Feed</a></li>
+        {block:SubmissionsEnabled}<li><a href="/submit">{SubmitLabel}</a></li>{/block:SubmissionsEnabled}
+        {block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
+        {block:HasPages}{block:Pages}<li><a href="{URL}" title="{Label}">{Label}</a></li>{/block:Pages}{/block:HasPages}
       <ul>
     </nav>
-
-    <p class="side-bar-title">Recent Tweets</p>
-
-    <p class="description">
-      <a href="http://www.synthmedia.co.uk/">@igor_h_stravinsky</a> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
-    </p>
 
   </div>
 
   <nav class="top-bar">
     <div class="content-wrapper">
-      <p class="top-bar__title">{Title}</p>
+      <a href="#" class="top-bar__title">{Title}</a>
       <a class="top-bar__icon top-bar__icon--menu" href="#"></a>
       <a class="top-bar__icon top-bar__icon--search" href="#"></a>
       <a class="top-bar__icon top-bar__icon--archive" href="/archive"></a>
@@ -599,7 +922,7 @@
   <div class="content">
     <div class="content-wrapper">
 
-      <header class="page-header">
+      <header class="page-header clearfix">
 
         <nav class="page-header__navigation">
           <ul>
@@ -609,36 +932,30 @@
           <form class="page-header__search" action="/search" method="get" >
             <input id="Search" class="SearchBox" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
           </form>
-        <nav>
+        </nav>
 
-        <h1 class="page-header__title" title="{Title}">{Title}</h1>
+        <a class="page-header__title__link" href="/"><h1 class="page-header__title" title="{Title}">{Title}</h1></a>
 
       </header>
 
-
-
       <!-- Start Posts -->
-
-
 
       <section class="posts">
       {block:Posts}
 
-  <!--======================================================
-    Text Post
-  =======================================================-->
+<!-- ---------------------------------------------------------------------------
+  Text Post
+---------------------------------------------------------------------------- -->
 
         {block:Text}
           <div class="text-post">
-
 
             <div class="copy">
               {block:Title}<h2><a class="post-title" href="{Permalink}">{Title}</a></h2>{/block:Title}
               <p>{Body}</p>
             </div>
-            
-            <div class="meta-data">
 
+            <div class="meta-data">
               <ul>
                 {block:Date}
                 <li>
@@ -667,128 +984,533 @@
                   {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
                 </div><!-- End Post Tags -->
                 {/block:HasTags}
-              </ol><!-- End Post Footer -->
-            </div><!-- End Post Footer Wrapper -->
+
+                <div class="social-button">
+                  <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+                </div>
+              </ul>
+            </div><!-- End Post Meta -->
+
           </div><!-- End Text Post -->
         {/block:Text}
 
-  <!--======================================================
-    Photo Post
-  =======================================================-->
+<!-- ---------------------------------------------------------------------------
+  Photo Post
+---------------------------------------------------------------------------- -->
 
         {block:Photo}
-          <li class="post-photo">
-              <img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-                {block:Caption}
-                  <div class="caption">{Caption}</div>
-                {/block:Caption}
-          </li><!-- End Text Post -->
+          <div class="post-photo">
+            {block:HighRes}
+            <div class="heigh-res-hero">
+              <img src="{PhotoURL-HighRes}"/>
+            </div>
+            {/block:HighRes}
+
+            <div class="copy">
+              <a class="low-res" href="{block:HighRes}{PhotoURL-HighRes}{/block:HighRes}"><img src="{PhotoURL-500}" alt="{PhotoAlt}"/></a>
+              {block:Caption}
+                <div class="caption">{Caption}</div>
+              {/block:Caption}
+            </div>
+
+            <div class="meta-data">
+              <ul>
+                {block:Date}
+                <li>
+                  <a class="date" href="{Permalink}" title="Date Posted">
+                    {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                  </a><!-- End Date Posted Link -->
+                </li><!-- End Date Posted Wrapper -->
+                {/block:Date}
+                {block:RebloggedFrom}
+                <li>
+                  <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                    Reblogged From {ReblogParentName}
+                  </a><!-- End Reblog From Link -->
+                </li><!-- End Rebloged From Wrapper -->
+                {/block:RebloggedFrom}
+                {block:NoteCount}
+                <li>
+                  <a class="notes" href="{Permalink}" title="Notes">
+                    {NoteCount} likes
+                  </a><!-- End Notes Link -->
+                </li><!-- End Notes Wrapper -->
+                {/block:NoteCount}
+
+                {block:HasTags}
+                <div class="tags-list">
+                  {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+                </div><!-- End Post Tags -->
+                {/block:HasTags}
+
+
+                <div class="reblog-button">
+                  {ReblogButton}
+                </div>
+                <div class="short-link-button-wrapper">
+                  <div class="short-link">Shortcode</div>
+                  <div class="short-link-dropdown">
+                    <span class="short-link-dropdown-arrow"></span>
+                    <input type="text" value="fsdf3v4h"/>
+                  </div>
+                </div>
+              </ul>
+            </div><!-- End Post Meta -->
+
+          </div><!-- End Text Post -->
         {/block:Photo}
 
-  <!--======================================================
-    Photoset
-  =======================================================-->
+<!-- ---------------------------------------------------------------------------
+  Panorama Photo Post
+---------------------------------------------------------------------------- -->
+
+        {block:Panorama}
+          <div class="post-photo">
+            <div class="heigh-res-hero">
+              {LinkOpenTag}<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>{LinkCloseTag}
+            </div>
+            <div class="copy">
+              {block:Caption}
+                <div class="caption">{Caption}</div>
+              {/block:Caption}
+            </div>
+
+            <div class="meta-data">
+              <ul>
+                {block:Date}
+                <li>
+                  <a class="date" href="{Permalink}" title="Date Posted">
+                    {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                  </a><!-- End Date Posted Link -->
+                </li><!-- End Date Posted Wrapper -->
+                {/block:Date}
+                {block:RebloggedFrom}
+                <li>
+                  <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                    Reblogged From {ReblogParentName}
+                  </a><!-- End Reblog From Link -->
+                </li><!-- End Rebloged From Wrapper -->
+                {/block:RebloggedFrom}
+                {block:NoteCount}
+                <li>
+                  <a class="notes" href="{Permalink}" title="Notes">
+                    {NoteCount} likes
+                  </a><!-- End Notes Link -->
+                </li><!-- End Notes Wrapper -->
+                {/block:NoteCount}
+
+                {block:HasTags}
+                <div class="tags-list">
+                  {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+                </div><!-- End Post Tags -->
+                {/block:HasTags}
+                <div class="social-button">
+                  <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}">Tweet</a>
+                </div>
+                <div class="reblog-button">
+                  {ReblogButton}
+                </div>
+              </ul>
+            </div><!-- End Post Meta -->
+
+          </div><!-- End Text Post -->
+        {/block:Panorama}
+
+<!-- ---------------------------------------------------------------------------
+  Photoset
+---------------------------------------------------------------------------- -->
 
         {block:Photoset}
-        <!--  Photoset Post -->
         <div class="photo-set-post">
-          {block:Photos}
-            {block:HighRes}
-            <a href="{PhotoURL-HighRes}">
-              <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
-            </a><!-- End HighRes Photo Set -->
-            {/block:HighRes}
-          {/block:Photos}
-          {Photoset-500}
-          <p>{Caption}</p>
+          <div class="copy">
+            {Photoset-500}
+            <p>{Caption}</p>
+          </div>
+
+          <div class="meta-data">
+            <ul>
+              {block:Date}
+              <li>
+                <a class="date" href="{Permalink}" title="Date Posted">
+                  {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                </a><!-- End Date Posted Link -->
+              </li><!-- End Date Posted Wrapper -->
+              {/block:Date}
+              {block:RebloggedFrom}
+              <li>
+                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                  Reblogged From {ReblogParentName}
+                </a><!-- End Reblog From Link -->
+              </li><!-- End Rebloged From Wrapper -->
+              {/block:RebloggedFrom}
+              {block:NoteCount}
+              <li>
+                <a class="notes" href="{Permalink}" title="Notes">
+                  {NoteCount} likes
+                </a><!-- End Notes Link -->
+              </li><!-- End Notes Wrapper -->
+              {/block:NoteCount}
+
+              {block:HasTags}
+              <div class="tags-list">
+                {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+              </div><!-- End Post Tags -->
+              {/block:HasTags}
+              <div class="social-button">
+                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}">Tweet</a>
+              </div>
+              <div class="reblog-button">
+                {ReblogButton}
+              </div>
+            </ul>
+          </div><!-- End Post Meta -->
         </div><!-- End Photoset Post -->
         {/block:Photoset}
 
-  <!--======================================================
-    Quote
-  =======================================================-->
+<!-- ---------------------------------------------------------------------------
+  Quote
+---------------------------------------------------------------------------- -->
 
         {block:Quote}
         <div class="quote-post">
-          <blockquote>"{Quote}"</blockquote>
-          {block:Source}<p>&#8212; {Source}</p>{/block:Source}
+          <div class="copy">
+            <blockquote class="big-quote">"{Quote}"</blockquote>
+            {block:Source}<p>&#8212; {Source}</p>{/block:Source}
+          </div><!-- End Copy -->
+
+          <div class="meta-data">
+            <ul>
+              {block:Date}
+              <li>
+                <a class="date" href="{Permalink}" title="Date Posted">
+                  {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                </a><!-- End Date Posted Link -->
+              </li><!-- End Date Posted Wrapper -->
+              {/block:Date}
+              {block:RebloggedFrom}
+              <li>
+                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                  Reblogged From {ReblogParentName}
+                </a><!-- End Reblog From Link -->
+              </li><!-- End Rebloged From Wrapper -->
+              {/block:RebloggedFrom}
+              {block:NoteCount}
+              <li>
+                <a class="notes" href="{Permalink}" title="Notes">
+                  {NoteCount} likes
+                </a><!-- End Notes Link -->
+              </li><!-- End Notes Wrapper -->
+              {/block:NoteCount}
+
+              {block:HasTags}
+              <div class="tags-list">
+                {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+              </div><!-- End Post Tags -->
+              {/block:HasTags}
+              <div class="social-button">
+                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Quote}">Tweet</a>
+              </div>
+              <div class="reblog-button">
+                {ReblogButton}
+              </div>
+            </ul>
+          </div><!-- End Post Meta -->
         </div><!-- End Quote Post -->
         {/block:Quote}
 
-  <!--======================================================
-    Link
-  =======================================================-->
+<!-- ---------------------------------------------------------------------------
+  Link
+---------------------------------------------------------------------------- -->
 
         {block:Link}
         <div class="link-post">
-          <a href="{URL}" {Target}>{Name}</a>
-          {block:Description}<p>{Description}</p>{/block:Description}
+          <div class="copy">
+            <h2><a class="link-post__link" href="{URL}" {Target}>{Name}</a></h2>
+            {block:Description}<p>{Description}</p>{/block:Description}
+          </div>
+
+          <div class="meta-data">
+            <ul>
+              {block:Date}
+              <li>
+                <a class="date" href="{Permalink}" title="Date Posted">
+                  {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                </a><!-- End Date Posted Link -->
+              </li><!-- End Date Posted Wrapper -->
+              {/block:Date}
+              {block:RebloggedFrom}
+              <li>
+                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                  Reblogged From {ReblogParentName}
+                </a><!-- End Reblog From Link -->
+              </li><!-- End Rebloged From Wrapper -->
+              {/block:RebloggedFrom}
+              {block:NoteCount}
+              <li>
+                <a class="notes" href="{Permalink}" title="Notes">
+                  {NoteCount} likes
+                </a><!-- End Notes Link -->
+              </li><!-- End Notes Wrapper -->
+              {/block:NoteCount}
+
+              {block:HasTags}
+              <div class="tags-list">
+                {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+              </div><!-- End Post Tags -->
+              {/block:HasTags}
+              <div class="social-button">
+                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" >Tweet</a>
+              </div>
+              <div class="reblog-button">
+                {ReblogButton}
+              </div>
+            </ul>
+          </div><!-- End Post Meta -->
+
         </div><!-- End Link Post -->
         {/block:Link}
 
-  <!--======================================================
-    Chat
-  =======================================================-->
+<!-- ---------------------------------------------------------------------------
+  Chat
+---------------------------------------------------------------------------- -->
 
         {block:Chat}
         <div class="chat-post">
-          {block:Title}<a href="{Permalink}">{Title}</a>{/block:Title}
-          <ul>
-            {block:Lines}
-            <li class="{Alt} user_{UserNumber}">
-              {block:Label}
-              <span class="label">{Label}</span>
-              {/block:Label}
-                {Line}
-            </li><!-- End Chat Line -->
-            {/block:Lines}
-          </ul><!-- End Chat Block -->
+          <div class="copy chat-copy">
+            {block:Title}<a href="{Permalink}">{Title}</a>{/block:Title}
+            <ul>
+              {block:Lines}
+              <li class="{Alt} user_{UserNumber}">
+                {block:Label}
+                <span class="label">{Label}</span>
+                {/block:Label}
+                  {Line}
+              </li><!-- End Chat Line -->
+              {/block:Lines}
+            </ul><!-- End Chat Block -->
+          </div>
+
+          <div class="meta-data">
+            <ul>
+              {block:Date}
+              <li>
+                <a class="date" href="{Permalink}" title="Date Posted">
+                  {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                </a><!-- End Date Posted Link -->
+              </li><!-- End Date Posted Wrapper -->
+              {/block:Date}
+              {block:RebloggedFrom}
+              <li>
+                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                  Reblogged From {ReblogParentName}
+                </a><!-- End Reblog From Link -->
+              </li><!-- End Rebloged From Wrapper -->
+              {/block:RebloggedFrom}
+              {block:NoteCount}
+              <li>
+                <a class="notes" href="{Permalink}" title="Notes">
+                  {NoteCount} likes
+                </a><!-- End Notes Link -->
+              </li><!-- End Notes Wrapper -->
+              {/block:NoteCount}
+
+              {block:HasTags}
+              <div class="tags-list">
+                {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+              </div><!-- End Post Tags -->
+              {/block:HasTags}
+              <div class="social-button">
+                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Quote}">Tweet</a>
+              </div>
+              <div class="reblog-button">
+                {ReblogButton}
+              </div>
+            </ul>
+          </div><!-- End Post Meta -->
+
         </div><!-- End Chat Post -->
         {/block:Chat}
 
-  <!--======================================================
-    Audio
-  =======================================================-->
+<!-- ---------------------------------------------------------------------------
+  Video Post
+---------------------------------------------------------------------------- -->
+
+        {block:Video}
+        <div class="video-post">
+
+          <div class="heigh-res-hero">
+            {Video-700}
+          </div>
+
+          <div class="copy">
+            {block:Caption}<p>{Caption}</p>{/block:Caption}
+          </div>
+
+          <div class="meta-data">
+            <ul>
+              {block:Date}
+              <li>
+                <a class="date" href="{Permalink}" title="Date Posted">
+                  {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                </a><!-- End Date Posted Link -->
+              </li><!-- End Date Posted Wrapper -->
+              {/block:Date}
+              {block:RebloggedFrom}
+              <li>
+                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                  Reblogged From {ReblogParentName}
+                </a><!-- End Reblog From Link -->
+              </li><!-- End Rebloged From Wrapper -->
+              {/block:RebloggedFrom}
+              {block:NoteCount}
+              <li>
+                <a class="notes" href="{Permalink}" title="Notes">
+                  {NoteCount} likes
+                </a><!-- End Notes Link -->
+              </li><!-- End Notes Wrapper -->
+              {/block:NoteCount}
+
+              {block:HasTags}
+              <div class="tags-list">
+                {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+              </div><!-- End Post Tags -->
+              {/block:HasTags}
+              <div class="social-button">
+                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Quote}">Tweet</a>
+              </div>
+              <div class="reblog-button">
+                {ReblogButton}
+              </div>
+            </ul>
+          </div><!-- End Post Meta -->
+        </div>
+        {/block:Video}
+
+<!-- ---------------------------------------------------------------------------
+  Audio Post
+---------------------------------------------------------------------------- -->
 
         {block:Audio}
         <div class="audio-post">
-          {block:AudioEmbed}
-          <div class="copy">
-            <div class="AudioEmbed">{AudioEmbed-640}</div>
-            {block:Caption}<p>{Caption}</p>{/block:Caption}
+          <div class="audio-hero">
+            {block:AudioEmbed}
+              <div class="audio-embed">{AudioEmbed-500}</div>
             {/block:AudioEmbed}
+          </div>
+
+          <div class="copy">
+
             {block:AudioPlayer}
-            {block:Artist}
-            <h2><a class="post-title" href="{Permalink}" title="{Artist} &#8211; {block:TrackName}{TrackName}{/block:TrackName}">{Artist} {block:TrackName}&#8211; {TrackName}{/block:TrackName}</a></h2>
-            <!-- End Audio Post Title / Artist / Track Name -->
-            {/block:Artist}
-            {block:AlbumArt}<img src="{AlbumArtURL}" alt="Album Art"/>{/block:AlbumArt}
-            {AudioPlayerWhite}
-            <p>{block:Caption}{Caption}{/block:Caption}</p>
-            <p>Played {PlayCount} times.</p>
+
+              {block:Artist}
+              <h2 class="audio-post-title"><a href="{Permalink}" title="{Artist} &#8211; {block:TrackName}{TrackName}{/block:TrackName}">{Artist} {block:TrackName}&#8211; {TrackName}{/block:TrackName}</a></h2>
+              <!-- End Audio Post Title / Artist / Track Name -->
+              {/block:Artist}
+
+              <p class="play-count">Played {PlayCount} times.</p>
+
+              {AudioPlayerBlack}
+
+              {block:AlbumArt}<img class="album-art" src="{AlbumArtURL}" alt="Album Art"/>{/block:AlbumArt}
+
             {/block:AudioPlayer}
-        </div>
+
+            {block:Caption}{Caption}{/block:Caption}
+
+          </div>
+
+          <div class="meta-data">
+            <ul>
+              {block:Date}
+              <li>
+                <a class="date" href="{Permalink}" title="Date Posted">
+                  {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                </a><!-- End Date Posted Link -->
+              </li><!-- End Date Posted Wrapper -->
+              {/block:Date}
+              {block:RebloggedFrom}
+              <li>
+                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                  Reblogged From {ReblogParentName}
+                </a><!-- End Reblog From Link -->
+              </li><!-- End Rebloged From Wrapper -->
+              {/block:RebloggedFrom}
+              {block:NoteCount}
+              <li>
+                <a class="notes" href="{Permalink}" title="Notes">
+                  {NoteCount} likes
+                </a><!-- End Notes Link -->
+              </li><!-- End Notes Wrapper -->
+              {/block:NoteCount}
+
+              {block:HasTags}
+              <div class="tags-list">
+                {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+              </div><!-- End Post Tags -->
+              {/block:HasTags}
+              <div class="social-button">
+                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Quote}">Tweet</a>
+              </div>
+              <div class="reblog-button">
+                {ReblogButton}
+              </div>
+            </ul>
+          </div><!-- End Post Meta -->
+
         </div><!-- End Audio Post -->
         {/block:Audio}
 
-  <!--======================================================
-    Video
-  =======================================================-->
+        {block:PermalinkPage}
+        <div class="post-footer">
+          {block:IfDisqusShortname}
+          <div class="qisqus" id="qisqus">
+            <script type="text/javascript">var disqus_url = "{Permalink}"; var disqus_title ="{block:PostTitle}{PostTitle}{/block:PostTitle}";</script>{block:Permalink}<div id="disqus_thread"></div>
+            <script type="text/javascript">
+            /**
+              * var disqus_identifier; [Optional but recommended: Define a unique identifier (e.g. post id or slug) for this thread]
+            */
+            (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = 'http://{text:Disqus Shortname}.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript={text:Disqus Shortname}">comments powered by Disqus.</a></noscript>
+            <a class="DisqusCredit" href="http://disqus.com">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+            {/block:Permalink}<script type="text/javascript">
+            var disqus_shortname = '{text:Disqus Shortname}';
+            (function () {
+              var s = document.createElement('script'); s.async = true;
+              s.src = 'http://disqus.com/forums/{text:Disqus Shortname}/count.js';
+              (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+            }());
+            </script>
+          </div><!-- End Disqus -->
+          {/block:IfDisqusShortname}
+        </div>
+        {/block:PermalinkPage}
 
-        {block:Video}
-          <div>
-            {Video-500}
-            {block:Caption}<p>{Caption}</p>{/block:Caption}
-          </div>
-        {/block:Video}
-
+        <div class="post-notes">
+          {PostNotes}
+        </div>
 
       {/block:Posts}
       </section>
       <!-- End Posts -->
 
+<!-- ---------------------------------------------------------------------------
+  Footer
+---------------------------------------------------------------------------- -->
 
-
+      {block:IndexPage}
       <div class="pagination">
           {block:PreviousPage}
           <div class="previous-page-section">
@@ -807,9 +1529,11 @@
         {/block:NextPage}
 
       </div><!-- End Pagination -->
+      {/block:IndexPage}
 
       <footer class="page-footer">
-        <div class="copyright"> Copyright © 2013. Designed by <a href="http://synthmedia.co.uk">Synth Media</a>. Built in Bristol, England.</div>
+        <div class="footer-links">View <a title="archive" href="/archive">archive</a> posts or view a <a title="random post" href="/random">random</a> post.</div>
+        <div class="copyright">Copyright © 2013. Designed by <a href="http://synthmedia.co.uk">Synth Media</a>. Built in Bristol, England.</div>
       </footer>
     </div>
   </div>
@@ -819,38 +1543,67 @@
 
   <script type="text/javascript">
 
-    var primaryNav = $('.content');
+    var primaryNav = $('.content')
+      , menuIcon = $('.js-page-header__navigation__item--menu')
+      , sideBarHeight = $('.side-bar').height()
+      , photoPost = $('.post-photo')
+
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
     $('.js-page-header__navigation__item--menu').on('click', function(e){
       if( primaryNav.hasClass('nav-open') ){
-        primaryNav.removeClass('nav-open');
-        primaryNav.addClass('nav-closed');
+        primaryNav
+          .removeClass('nav-open')
+          .addClass('nav-closed');
+        menuIcon.removeClass('page-header__navigation__item--menu--active');
       } else {
-        primaryNav.addClass('nav-open');
-        primaryNav.removeClass('nav-closed');
+        primaryNav
+          .addClass('nav-open')
+          .removeClass('nav-closed');
+        menuIcon.addClass('page-header__navigation__item--menu--active');
       }
       e.preventDefault();
     });
 
     $('.top-bar__icon--menu').on('click', function(e){
       $('html, body').animate( { scrollTop:(0) }, 'fast', function() {
-        primaryNav.removeClass('nav-closed');
-        primaryNav.addClass('nav-open');
+        primaryNav
+          .removeClass('nav-closed')
+          .addClass('nav-open');
+        menuIcon.addClass('page-header__navigation__item--menu--active');
       });
-
       e.preventDefault();
     });
 
-    $(window).scroll(function() {
-      if ( $(window).scrollTop() > 100 ) {
-        $('.top-bar').css( 'top', '0px' );
-        primaryNav.removeClass('nav-open');
-        primaryNav.addClass('nav-closed');
-      }
+  // Short Link Drop Down.
 
+    $('.short-link').on('click', function(e){
+      $('.short-link-dropdown').css('display','block');
+      e.preventDefault();
+    });
+
+    $('body').on('click', function(e){
+      if ( $('.short-link-dropdown').hasClass('dropdown-open') )
+      $('.short-link-dropdown').css('display','none');
+    });
+
+    $.each( photoPost, function () {
+      if ( $(this).find('.heigh-res-hero') ) {
+        $(this).find('.low-res').css( 'display', 'none' );
+      }
+    });
+
+    $(window).scroll(function() {
+      if ( $(window).scrollTop() > sideBarHeight + 50 ) {
+        $('.top-bar').css( 'top', '0px' );
+        primaryNav
+          .removeClass('nav-open')
+          .addClass('nav-closed');
+        menuIcon.removeClass('page-header__navigation__item--menu--active');
+      }
       if ( $(window).scrollTop() < 100 ) {
         $('.top-bar').css( 'top', '-53px' );
       }
-
     });
   </script>
 
