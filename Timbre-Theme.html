@@ -190,7 +190,13 @@
     border: 1px solid #dddad7;
     border-radius: 3px;
     cursor: pointer;
-    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
+    background-repeat: no-repeat;
+  }
+
+  .page-header__navigation__item:hover {
+    border: 1px solid #f65700;
+    background-color: #f65700;
+
   }
 
   .page-header__navigation__link {
@@ -200,44 +206,43 @@
   }
 
   .page-header__navigation__item--menu {
-    background-position: 9px -6px;
+    background-image: url('http://static.tumblr.com/ubkenek/ujFmt26rz/menu-icon.png') ;
+    background-position: 9px 12px;
   }
 
   .page-header__navigation__item--menu:hover {
-    background-position: -28px -6px;
-    background-color: #f65700;
+    background-position: -41px 12px;
   }
 
   .page-header__navigation__item--menu--active {
-    background-position: -28px -6px;
-    background-color: #f65700;
+    background-position: -41px 12px;
   }
 
   .page-header__navigation__item--search {
-    background-position: -65px -8px;
+    background-image: url('http://static.tumblr.com/ubkenek/gPvmt26zf/search-icon.png');
+    background-position: 9px 7px;
   }
 
   .page-header__navigation__item--search:hover {
-    background-position: -102px -8px;
-    background-color: #f65700;
+    background-position: -30px 7px;
   }
 
   .page-header__navigation__item--archive {
-    background-position: -93px -194px;
+    background-image: url('http://static.tumblr.com/ubkenek/7R9mt27i5/archive-icon.png');
+    background-position: 8px 8px;
   }
 
   .page-header__navigation__item--archive:hover {
-    background-position: -138px -194px;
-    background-color: #f65700;
+    background-position: -37px 8px;
   }
 
   .page-header__navigation__item--random {
-    background-position: 10px -191px;
+    background-image: url('http://static.tumblr.com/ubkenek/lZFmt27bv/random-icon.png');
+    background-position: 9px 11px;
   }
 
   .page-header__navigation__item--random:hover {
-    background-position: -43px -191px;
-    background-color: #f65700;
+    background-position: -42px 11px;
   }
 
   .page-header__search {
@@ -291,16 +296,21 @@
     margin: 8px 0 0 5px;
     border-radius: 3px;
     border: 1px solid #ebe9e5;
-    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
+    background-repeat: no-repeat;
+  }
+
+  .top-bar__icon:hover {
+    background-color: #f65700;
+    border: 1px solid #f65700;
   }
 
   .top-bar__icon--random {
-    background-position: 7px -51px;
+    background-position: 7px 8px;
+    background-image: url('http://static.tumblr.com/ubkenek/NBPmt28ug/random-icon-small.png');
   }
 
   a.top-bar__icon--random:hover {
-    background-color: #f65700;
-    background-position: -32px -51px;
+    background-position: -33px 8px;
   }
 
   .top-bar__icon--archive {
@@ -308,7 +318,6 @@
   }
 
   a.top-bar__icon--archive:hover {
-    background-color: #f65700;
     background-position: -104px -53px;
   }
 
@@ -317,7 +326,6 @@
   }
 
   a.top-bar__icon--search:hover {
-    background-color: #f65700;
     background-position: -174px -53px;
   }
 
@@ -326,7 +334,6 @@
   }
 
   a.top-bar__icon--menu:hover {
-    background-color: #f65700;
     background-position: -241px -53px;
   }
 
@@ -585,12 +592,12 @@
 
   a.notes, a.reblogs, a.date, .tags-list{
     padding-left: 24px;
-    background-image: url('http://static.tumblr.com/ubkenek/k7wmpbeim/icons.png');
     background-repeat: no-repeat;
   }
 
   .tags-list{
-    background-position: -300px -60px;
+    background-image: url('http://static.tumblr.com/ubkenek/ymCmt27z0/tags-icon.png');
+    background-position: 0;
     height: 24px;
     margin-top: 10px;
   }
@@ -609,15 +616,13 @@
   }
 
   a.notes{
-    background-position: -300px 1px;
-  }
-
-  a.reblogs{
-    background-position: -304px -155px;
+    background-image: url('http://static.tumblr.com/ubkenek/fXZmt283w/like-icon.png');
+    background-position: 0;
   }
 
   a.date{
-    background-position: -300px -32px;
+    background-image: url(http://static.tumblr.com/ubkenek/gG2mt27t3/clock-small.png);
+    background-position: 0;
   }
 
   .meta-data a:hover{
@@ -652,11 +657,14 @@
     font-size: 12px;
     color: #9c9c9b;
     cursor: pointer;
-    background: url('http://static.tumblr.com/ubkenek/bcfmpgyfk/icons.png') no-repeat 3px -88px;
+    background-repeat: no-repeat;
+    background-image: url('http://static.tumblr.com/ubkenek/gsemt28ad/shortcode-icon.png');
+    background-position: 11px 10px;
   }
 
   .short-link:hover {
-    background: #f65700 url('http://static.tumblr.com/ubkenek/bcfmpgyfk/icons.png') no-repeat -292px -117px;
+    background-position: -38px 10px;
+    background-color: #f65700;
     border: 1px solid #f65700;
     color: #faf9f4;
   }
@@ -1786,7 +1794,7 @@
       event.preventDefault()
     })
 
-  // Short Link Drop Down.
+    // Short Link Drop Down.
 
     var shortCodeOpen = false
 
