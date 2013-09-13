@@ -61,7 +61,6 @@
 
   /* --- Typography --- */
 
-
   h1 {
     font-family: 'Droid Serif', serif;
     font-weight: 400;
@@ -163,7 +162,6 @@
     Header
   ========================================================*/
 
-
   a.page-header__title__link {
     display: block;
     float: left;
@@ -196,7 +194,6 @@
   .page-header__navigation__item:hover {
     border: 1px solid #f65700;
     background-color: #f65700;
-
   }
 
   .page-header__navigation__link {
@@ -216,6 +213,8 @@
 
   .page-header__navigation__item--menu--active {
     background-position: -41px 12px;
+    background-color: #f65700;
+    border: 1px solid #f65700;
   }
 
   .page-header__navigation__item--search {
@@ -249,13 +248,42 @@
     display: none;
   }
 
-  .nav-open {
-    -webkit-transform: translate3d(-350px, 0, 0);
-    border-right: 4px solid #f1eeea;
+  /* --- @Media Palm --- */
+  @media (max-width: 799px) {
+    .page-header__navigation {
+      width: 100%;
+      text-align: center;
+    }
+    .page-header__navigation__item {
+      float: none;
+      display: inline-block;
+      margin: 0 5px;
+    }
+    .page-header__title,
+    .page-header__title__link {
+      width: 100%;
+      text-align: center;
+    }
+    .page-header__navigation__item--search {
+      display: none;
+    }
+
+    a.page-header__title__link:hover {
+      border-bottom: 3px solid transparent
+    }
+
   }
 
-  .nav-closed {
-    -webkit-transform: translate3d(-0px, 0, 0);
+  /* Desktop and Lap */
+  @media (min-width: 800px) {
+    .nav-open {
+      -webkit-transform: translate3d(-350px, 0, 0);
+      border-right: 4px solid #f1eeea;
+    }
+
+    .nav-closed {
+      -webkit-transform: translate3d(-0px, 0, 0);
+    }
   }
 
  /* --- Top Bar --- */
@@ -314,27 +342,30 @@
   }
 
   .top-bar__icon--archive {
-    background-position: -70px -53px;
+    background-position: 7px 7px;
+    background-image: url('http://static.tumblr.com/ubkenek/84Jmt29ai/archive-icon-small.png');
   }
 
   a.top-bar__icon--archive:hover {
-    background-position: -104px -53px;
+    background-position: -27px 7px;
   }
 
   .top-bar__icon--search {
-    background-position: -141px -53px;
+    background-image: url('http://static.tumblr.com/ubkenek/vkVmt29ju/search-icon-small.png');
+    background-position: 7px 6px;
   }
 
   a.top-bar__icon--search:hover {
-    background-position: -174px -53px;
+    background-position: -26px 6px;
   }
 
   .top-bar__icon--menu {
-    background-position: -209px -53px;
+    background-image: url('http://static.tumblr.com/ubkenek/KVEmt29n3/menu-icon-small.png');
+    background-position: 7px 10px;
   }
 
   a.top-bar__icon--menu:hover {
-    background-position: -241px -53px;
+    background-position: -25px 10px;
   }
 
   /*========================================================
@@ -350,48 +381,14 @@
     padding: 50px 0px 30px;
   }
 
-  .side-bar__nav{
-    border-bottom: #dddad7 1px solid ;
-  }
-
-  .side-bar__nav a {
-    font-family: 'Droid Sans', sans-serif;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 15px 30px 15px 30px;
-    border-top: #dddad7 1px solid;
-    display: block;
-    width: 290px;
-    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
-    background-repeat: no-repeat;
-    background-position-x: 290px;
-    background-position-y: -146px;
-    -moz-transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-    transition-timing-function: ease;
-  }
-
-  .side-bar__nav a:hover {
-    background-color: #f65700;
-    color: #ffffff;
-    text-decoration: none;
-    background-position-x: 270px;
-    background-position-y: -146px;
-    border-top: #f65700 1px solid;
-  }
-
   .portrait {
     border-radius: 50%;
     overflow: hidden;
     display: block;
-    margin: 0 auto;
     border: 6px solid white;
   }
 
   .description {
-    margin: 0 30px 40px 30px;
     font-size: 14px;
     line-height: 1.6;
   }
@@ -402,7 +399,98 @@
     font-family: 'Droid Sans', sans-serif;
     color: #073f69;
     font-weight: 700;
-    margin: 40px 30px;
+  }
+
+  .side-bar__nav a {
+    font-family: 'Droid Sans', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  /* Desktop and Lap */
+  @media (min-width: 800px) {
+    .side-bar__nav{
+      border-bottom: #dddad7 1px solid;
+    }
+
+    .portrait {
+      margin: 0 auto;
+    }
+
+    .description {
+      margin: 0 30px 40px 30px;
+    }
+
+    .side-bar-title {
+      margin: 40px 30px;
+    }
+
+    .side-bar__nav a {
+      padding: 15px 30px 15px 30px;
+      border-top: #dddad7 1px solid;
+      display: block;
+      width: 290px;
+      background-image: url('http://static.tumblr.com/ubkenek/0RQmt29vc/hand-icon.png');
+      background-repeat: no-repeat;
+      background-position-x: 390px;
+      background-position-y: 18px;
+      -moz-transition: all 0.2s;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+      transition-timing-function: ease;
+    }
+
+    .side-bar__nav a:hover {
+      background-color: #f65700;
+      color: #ffffff;
+      text-decoration: none;
+      background-position-x: 290px;
+      background-position-y: 18px;
+      border-top: #f65700 1px solid;
+    }
+  }
+
+  @media (max-width: 799px) { /* --- @Media Palm --- */
+    .portrait {
+      display: none;
+    }
+
+    .side-bar {
+      width: 96%;
+      padding: 2%;
+    }
+
+    .description {
+      width: 100%;
+      margin: 0;
+      float: left;
+      margin: 18px 0;
+      text-align: center;
+    }
+
+    .side-bar-title {
+      text-transform: center;
+      margin: 29px 20px 0;
+    }
+
+    .side-bar__nav {
+      text-align: center;
+    }
+
+    .side-bar__nav li {
+      display: inline-block;
+      margin: 0 5px 10px 5px;
+      background: #f65700;
+      padding: 1px 7px;
+      border-radius: 3px;
+    }
+
+    .side-bar__nav li a {
+      color: #f6f3ef;
+      font-size: 12px;
+    }
+
   }
 
   /*========================================================
@@ -777,6 +865,12 @@
     display: none;
   }
 
+  .fb-like,
+  .twitter-share-button {
+    float: left;
+    margin: 0 10px 0 0;
+  }
+
   /*========================================================
     Pagination
   ========================================================*/
@@ -885,6 +979,7 @@
       margin: 0 0 60px 0;
     }
     .social-button {
+      width: 500px;
       float: right;
       clear: both;
       margin-top: 15px;
@@ -917,7 +1012,6 @@
     }
   }
 
-
   @media screen and (min-width: 680px){
     .page-header__navigation{
       float: right;
@@ -932,7 +1026,7 @@
     }
   }
 
-  @media screen and (max-width: 680px){
+  @media screen and (max-width: 799px){
     h1 {
       font-size: 40px;
     }
@@ -972,6 +1066,9 @@
     .meta-data {
       width: 240px;
     }
+    .social-button {
+      width: 500px;
+    }
   }
 
   @media (min-width: 1180px) { /* --- @Media Desktop --- */
@@ -983,6 +1080,9 @@
     }
     .meta-data {
       width: 280px;
+    }
+    .social-button {
+      margin-right: 340px;
     }
   }
 
@@ -1019,7 +1119,7 @@
 
   <div class="side-bar">
     <img class="portrait" src="{PortraitURL-128}" />
-    <p class="side-bar-title">{Title}</p>
+    <p class="side-bar-title">About</p>
 
     {block:Description}
       <p class="description">{Description}</p>
@@ -1766,21 +1866,48 @@
       , menuIcon = $('.js-page-header__navigation__item--menu')
       , sideBarHeight = $('.side-bar').height()
       , photoPost = $('.post-photo')
+      , windowWidth = $(document).width()
+      , sideBarHeight = $('.side-bar').outerHeight()
+      , menuOpen = false
 
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-    $('.js-page-header__navigation__item--menu').on('click', function(event){
-      if( primaryNav.hasClass('nav-open') ){
-        primaryNav
-          .removeClass('nav-open')
-          .addClass('nav-closed')
-        menuIcon.removeClass('page-header__navigation__item--menu--active')
+    function openCloseNav() {
+      if ( windowWidth < 799 ) {
+
+        sideBarHeight = $('.side-bar').outerHeight()
+
+        if ( !menuOpen ) {
+          menuOpen = true
+          $('.content').css( 'margin-top', sideBarHeight )
+          $('.content-wrapper').css('border-top','2px solid #dddad7')
+          menuIcon.addClass('page-header__navigation__item--menu--active')
+        } else if ( menuOpen ) {
+          menuOpen = false
+          $('.content').css( 'margin-top', 0 )
+          $('.content-wrapper').css('border-top','none')
+          menuIcon.removeClass('page-header__navigation__item--menu--active')
+        }
+
       } else {
-        primaryNav
-          .addClass('nav-open')
-          .removeClass('nav-closed')
-        menuIcon.addClass('page-header__navigation__item--menu--active')
+
+        if ( primaryNav.hasClass('nav-open') ) {
+          primaryNav
+            .removeClass('nav-open')
+            .addClass('nav-closed')
+          menuIcon.removeClass('page-header__navigation__item--menu--active')
+        } else {
+          primaryNav
+            .addClass('nav-open')
+            .removeClass('nav-closed')
+          menuIcon.addClass('page-header__navigation__item--menu--active')
+        }
+
       }
+    }
+
+    $('.js-page-header__navigation__item--menu').on('click', function(event){
+      openCloseNav()
       event.preventDefault()
     })
 
