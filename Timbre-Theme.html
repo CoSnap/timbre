@@ -61,8 +61,8 @@
 
   /* --- Typography --- */
 
+
   h1 {
-    font-size: 60px;
     font-family: 'Droid Serif', serif;
     font-weight: 400;
     margin: 0;
@@ -76,7 +76,6 @@
     font-weight: 300;
     font-size: 42px;
     line-height: 54px;
-    margin: 0px 0px 60px 0px;
     color: #073f69;
   }
 
@@ -164,10 +163,6 @@
     Header
   ========================================================*/
 
-  .page-header {
-    padding: 60px 0 50px 0;
-    border-bottom: 2px solid #dddad7;
-  }
 
   a.page-header__title__link {
     display: block;
@@ -186,22 +181,22 @@
     clear: both;
   }
 
-  .page-header__navigation{
-    float: right;
-    margin: 3px 0 0 0;
-  }
-
   .page-header__navigation__item {
     width: 43px;
     height: 43px;
     display: block;
     float: right;
     margin: 0 0 0 10px;
-
     border: 1px solid #dddad7;
     border-radius: 3px;
     cursor: pointer;
-    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
+  }
+
+  .page-header__navigation__link {
+    width: 43px;
+    height: 43px;
+    display: inline-block;
   }
 
   .page-header__navigation__item--menu {
@@ -224,6 +219,24 @@
 
   .page-header__navigation__item--search:hover {
     background-position: -102px -8px;
+    background-color: #f65700;
+  }
+
+  .page-header__navigation__item--archive {
+    background-position: -93px -194px;
+  }
+
+  .page-header__navigation__item--archive:hover {
+    background-position: -138px -194px;
+    background-color: #f65700;
+  }
+
+  .page-header__navigation__item--random {
+    background-position: 10px -191px;
+  }
+
+  .page-header__navigation__item--random:hover {
+    background-position: -43px -191px;
     background-color: #f65700;
   }
 
@@ -278,7 +291,7 @@
     margin: 8px 0 0 5px;
     border-radius: 3px;
     border: 1px solid #ebe9e5;
-    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
   }
 
   .top-bar__icon--random {
@@ -342,7 +355,7 @@
     border-top: #dddad7 1px solid;
     display: block;
     width: 290px;
-    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
     background-repeat: no-repeat;
     background-position-x: 290px;
     background-position-y: -146px;
@@ -396,8 +409,8 @@
   .copy li {
     line-height: 30px;
     padding: 0 0 0 30px;
-    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
-    background-position: 7px -192px;
+    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
+    background-position: 7px -240px;
     background-repeat: no-repeat;
   }
 
@@ -414,10 +427,6 @@
     overflow: hidden;
   }
 
-  .caption {
-    width: 500px;
-  }
-
   .copy a:hover {
     text-decoration: none;
   }
@@ -428,17 +437,34 @@
     height: 23px;
     float: left;
     clear: both;
-    margin: 10px 0 0 0;
     padding: 3px 12px;
     border: 1px solid #e1e0dc;
     border-radius: 3px;
   }
 
+  /* Video Post */
+
+  .video-post .high-res-hero {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .high-res-hero iframe,
+  .high-res-hero object,
+  .high-res-hero embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+
   /* Photo Post */
 
-  .heigh-res-hero {
-    margin: 0 0 20px 0;
-  }
 
   /* Quote Post */
 
@@ -532,6 +558,7 @@
     float: right;
   }
 
+
   /*========================================================
     Notes
   ========================================================*/
@@ -545,9 +572,6 @@
     font-size: 13px;
     font-family: 'Droid Sans', sans-serif;
     font-weight: 700;
-    width: 280px;
-    float: left;
-    margin: 0 0 40px 0;
   }
 
   .meta-data li{
@@ -605,17 +629,9 @@
     margin-bottom: 0;
   }
 
-  .social-button {
-    float: left;
-    clear: both;
-    width: 100%;
-    margin-top: 15px;
-  }
-
   .twitter-share-button,
   .fb-like {
-    clear: both;
-    float: left;
+    float: right;
   }
 
   .short-link-button-wrapper {
@@ -689,6 +705,7 @@
     background: none;
     border: none;
     padding: 5px;
+    outline: none;
   }
 
   .short-link-dropdown-arrow {
@@ -767,7 +784,7 @@
     color: #9c9c9b;
     text-decoration: none;
     background-repeat: no-repeat;
-    background-image: url('http://static.tumblr.com/kc8g33y/Wmjmp25f1/icons.png');
+    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
   }
 
   a.next-page {
@@ -838,29 +855,134 @@
     Media Queries
   ========================================================*/
 
-  @media (max-width: 799px) { /* --- @Media Palm --- */
+  /* --- @Media Retina --- */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 
+  }
+
+  @media screen and (min-width: 555px){
+    .caption {
+      width: 500px;
+    }
+    .reblog-button {
+      margin-top: 60px;
+    }
+    .video-hero-wrapper {
+      padding-bottom: 45px;
+    }
+    h2{
+      margin: 0px 0px 60px 0px;
+    }
+    .post-photo .high-res-hero {
+      margin: 0 0 60px 0;
+    }
+    .social-button {
+      float: right;
+      clear: both;
+      margin-top: 15px;
+    }
+  }
+
+  @media screen and (max-width: 554px){
+    .caption {
+      width: 100%;
+    }
+    .total-pages {
+      display: none;
+    }
+    .reblog-button {
+      margin-top: 10px;
+    }
+    .video-hero-wrapper {
+      padding-bottom: 15px;
+    }
+    h2{
+      margin: 0px 0px 30px 0px;
+    }
+    .post-photo .high-res-hero {
+      margin: 0 0 30px 0;
+    }
+    .social-button {
+      float: left;
+      clear: both;
+      margin-top: 55px;
+    }
+  }
+
+
+  @media screen and (min-width: 680px){
+    .page-header__navigation{
+      float: right;
+      margin: 3px 0 0 0;
+    }
+    .page-header {
+      padding: 60px 0 50px 0;
+      border-bottom: 2px solid #dddad7;
+    }
+    h1 {
+      font-size: 60px;
+    }
+  }
+
+  @media screen and (max-width: 680px){
+    h1 {
+      font-size: 40px;
+    }
+    .page-header__navigation{
+      float: left;
+      margin: 3px 0 30px 0;
+    }
+    .page-header {
+      padding: 30px 0 50px 0;
+      border-bottom: 2px solid #dddad7;
+    }
+    .page-header__title__link {
+      clear: both;
+    }
+    .top-bar {
+      display: none;
+    }
+  }
+
+  @media (min-width: 555px) and (max-width: 799px) { /* --- @Media Palm --- */
+    .copy {
+      width: 500px;
+      margin: auto;
+    }
+    .meta-data {
+      width: 500px;
+      margin: 0 auto 40px;
+    }
   }
 
   @media (min-width: 800px) and (max-width: 1179px) { /* --- @Media Lap --- */
     .copy{
-      max-width: 500px;
+      width: 500px;
       float: right;
       display: block;
+    }
+    .meta-data {
+      width: 240px;
     }
   }
 
   @media (min-width: 1180px) { /* --- @Media Desktop --- */
     .copy{
       width: 500px;
-      margin-right: 180px;
+      margin-right: 340px;
       float: right;
       display: block;
     }
+    .meta-data {
+      width: 280px;
+    }
   }
 
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { /* --- @Media Retina --- */
-
+  @media (min-width: 800px) {
+    .meta-data {
+      float: left;
+      margin: 0 0 40px 0;
+    }
   }
 
   /*========================================================
@@ -927,6 +1049,8 @@
         <nav class="page-header__navigation">
           <ul>
             <li class="page-header__navigation__item page-header__navigation__item--menu js-page-header__navigation__item--menu"></li>
+            <li class="page-header__navigation__item page-header__navigation__item--archive"> <a class="page-header__navigation__link" href="/archive"></a> </li>
+            <li class="page-header__navigation__item page-header__navigation__item--random"> <a class="page-header__navigation__link" href="/random"></a> </li>
             <li class="page-header__navigation__item page-header__navigation__item--search"></li>
           </ul>
           <form class="page-header__search" action="/search" method="get" >
@@ -985,12 +1109,24 @@
                 </div><!-- End Post Tags -->
                 {/block:HasTags}
 
-                <div class="social-button">
-                  <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+
+                <div class="reblog-button">
+                  {ReblogButton}
+                </div>
+                <div class="short-link-button-wrapper">
+                  <div class="short-link">Shortcode</div>
+                  <div class="short-link-dropdown">
+                    <span class="short-link-dropdown-arrow"></span>
+                    <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                  </div>
                 </div>
               </ul>
             </div><!-- End Post Meta -->
+
+            <div class="social-button">
+              <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+            </div><!-- End Social Buttons -->
 
           </div><!-- End Text Post -->
         {/block:Text}
@@ -1002,7 +1138,7 @@
         {block:Photo}
           <div class="post-photo">
             {block:HighRes}
-            <div class="heigh-res-hero">
+            <div class="high-res-hero">
               <img src="{PhotoURL-HighRes}"/>
             </div>
             {/block:HighRes}
@@ -1052,11 +1188,16 @@
                   <div class="short-link">Shortcode</div>
                   <div class="short-link-dropdown">
                     <span class="short-link-dropdown-arrow"></span>
-                    <input type="text" value="fsdf3v4h"/>
+                    <input type="text" onClick="this.select();" value="{ShortURL}"/>
                   </div>
                 </div>
               </ul>
             </div><!-- End Post Meta -->
+
+            <div class="social-button">
+              <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+            </div><!-- End Social Buttons -->
 
           </div><!-- End Text Post -->
         {/block:Photo}
@@ -1067,7 +1208,7 @@
 
         {block:Panorama}
           <div class="post-photo">
-            <div class="heigh-res-hero">
+            <div class="high-res-hero">
               {LinkOpenTag}<img src="{PhotoURL-Panorama}" alt="{PhotoAlt}"/>{LinkCloseTag}
             </div>
             <div class="copy">
@@ -1105,15 +1246,25 @@
                   {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
                 </div><!-- End Post Tags -->
                 {/block:HasTags}
-                <div class="social-button">
-                  <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-                  <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}">Tweet</a>
-                </div>
+
+
                 <div class="reblog-button">
                   {ReblogButton}
                 </div>
+                <div class="short-link-button-wrapper">
+                  <div class="short-link">Shortcode</div>
+                  <div class="short-link-dropdown">
+                    <span class="short-link-dropdown-arrow"></span>
+                    <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                  </div>
+                </div>
               </ul>
             </div><!-- End Post Meta -->
+
+            <div class="social-button">
+              <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+            </div><!-- End Social Buttons -->
 
           </div><!-- End Text Post -->
         {/block:Panorama}
@@ -1158,15 +1309,26 @@
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-              <div class="social-button">
-                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}">Tweet</a>
-              </div>
+
+
               <div class="reblog-button">
                 {ReblogButton}
               </div>
+              <div class="short-link-button-wrapper">
+                <div class="short-link">Shortcode</div>
+                <div class="short-link-dropdown">
+                  <span class="short-link-dropdown-arrow"></span>
+                  <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                </div>
+              </div>
             </ul>
           </div><!-- End Post Meta -->
+
+          <div class="social-button">
+            <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+          </div><!-- End Social Buttons -->
+
         </div><!-- End Photoset Post -->
         {/block:Photoset}
 
@@ -1210,15 +1372,26 @@
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-              <div class="social-button">
-                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Quote}">Tweet</a>
-              </div>
+
+
               <div class="reblog-button">
                 {ReblogButton}
               </div>
+              <div class="short-link-button-wrapper">
+                <div class="short-link">Shortcode</div>
+                <div class="short-link-dropdown">
+                  <span class="short-link-dropdown-arrow"></span>
+                  <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                </div>
+              </div>
             </ul>
           </div><!-- End Post Meta -->
+
+          <div class="social-button">
+            <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+          </div><!-- End Social Buttons -->
+
         </div><!-- End Quote Post -->
         {/block:Quote}
 
@@ -1262,15 +1435,24 @@
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-              <div class="social-button">
-                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" >Tweet</a>
-              </div>
+
               <div class="reblog-button">
                 {ReblogButton}
               </div>
+              <div class="short-link-button-wrapper">
+                <div class="short-link">Shortcode</div>
+                <div class="short-link-dropdown">
+                  <span class="short-link-dropdown-arrow"></span>
+                  <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                </div>
+              </div>
             </ul>
           </div><!-- End Post Meta -->
+
+          <div class="social-button">
+            <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+          </div><!-- End Social Buttons -->
 
         </div><!-- End Link Post -->
         {/block:Link}
@@ -1324,15 +1506,24 @@
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-              <div class="social-button">
-                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Quote}">Tweet</a>
-              </div>
+
               <div class="reblog-button">
                 {ReblogButton}
               </div>
+              <div class="short-link-button-wrapper">
+                <div class="short-link">Shortcode</div>
+                <div class="short-link-dropdown">
+                  <span class="short-link-dropdown-arrow"></span>
+                  <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                </div>
+              </div>
             </ul>
           </div><!-- End Post Meta -->
+
+          <div class="social-button">
+            <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+          </div><!-- End Social Buttons -->
 
         </div><!-- End Chat Post -->
         {/block:Chat}
@@ -1343,9 +1534,10 @@
 
         {block:Video}
         <div class="video-post">
-
-          <div class="heigh-res-hero">
-            {Video-700}
+          <div class="video-hero-wrapper">
+            <div class="high-res-hero">
+              {Video-700}
+            </div>
           </div>
 
           <div class="copy">
@@ -1381,15 +1573,25 @@
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-              <div class="social-button">
-                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Quote}">Tweet</a>
-              </div>
+
               <div class="reblog-button">
                 {ReblogButton}
               </div>
+              <div class="short-link-button-wrapper">
+                <div class="short-link">Shortcode</div>
+                <div class="short-link-dropdown">
+                  <span class="short-link-dropdown-arrow"></span>
+                  <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                </div>
+              </div>
             </ul>
           </div><!-- End Post Meta -->
+
+          <div class="social-button">
+            <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+          </div><!-- End Social Buttons -->
+
         </div>
         {/block:Video}
 
@@ -1455,15 +1657,24 @@
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-              <div class="social-button">
-                <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Quote}">Tweet</a>
-              </div>
+
               <div class="reblog-button">
                 {ReblogButton}
               </div>
+              <div class="short-link-button-wrapper">
+                <div class="short-link">Shortcode</div>
+                <div class="short-link-dropdown">
+                  <span class="short-link-dropdown-arrow"></span>
+                  <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                </div>
+              </div>
             </ul>
           </div><!-- End Post Meta -->
+
+          <div class="social-button">
+            <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+          </div><!-- End Social Buttons -->
 
         </div><!-- End Audio Post -->
         {/block:Audio}
@@ -1550,61 +1761,64 @@
 
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-    $('.js-page-header__navigation__item--menu').on('click', function(e){
+    $('.js-page-header__navigation__item--menu').on('click', function(event){
       if( primaryNav.hasClass('nav-open') ){
         primaryNav
           .removeClass('nav-open')
-          .addClass('nav-closed');
-        menuIcon.removeClass('page-header__navigation__item--menu--active');
+          .addClass('nav-closed')
+        menuIcon.removeClass('page-header__navigation__item--menu--active')
       } else {
         primaryNav
           .addClass('nav-open')
-          .removeClass('nav-closed');
-        menuIcon.addClass('page-header__navigation__item--menu--active');
+          .removeClass('nav-closed')
+        menuIcon.addClass('page-header__navigation__item--menu--active')
       }
-      e.preventDefault();
-    });
+      event.preventDefault()
+    })
 
-    $('.top-bar__icon--menu').on('click', function(e){
+    $('.top-bar__icon--menu').on('click', function(event){
       $('html, body').animate( { scrollTop:(0) }, 'fast', function() {
         primaryNav
           .removeClass('nav-closed')
-          .addClass('nav-open');
-        menuIcon.addClass('page-header__navigation__item--menu--active');
-      });
-      e.preventDefault();
-    });
+          .addClass('nav-open')
+        menuIcon.addClass('page-header__navigation__item--menu--active')
+      })
+      event.preventDefault()
+    })
 
   // Short Link Drop Down.
 
-    $('.short-link').on('click', function(e){
-      $('.short-link-dropdown').css('display','block');
-      e.preventDefault();
-    });
+    var shortCodeOpen = false
 
-    $('body').on('click', function(e){
-      if ( $('.short-link-dropdown').hasClass('dropdown-open') )
-      $('.short-link-dropdown').css('display','none');
-    });
+    $('.short-link').on('click', function(event){
+      if ( !shortCodeOpen ) {
+        $(this).next('div').css('display','block')
+        shortCodeOpen = true
+      } else if ( shortCodeOpen ) {
+        $(this).next('div').css('display','none')
+        shortCodeOpen = false
+      }
+      event.preventDefault()
+    })
 
     $.each( photoPost, function () {
-      if ( $(this).find('.heigh-res-hero') ) {
-        $(this).find('.low-res').css( 'display', 'none' );
+      if ( $(this).find('.high-res-hero') ) {
+        $(this).find('.low-res').css( 'display', 'none' )
       }
-    });
+    })
 
     $(window).scroll(function() {
       if ( $(window).scrollTop() > sideBarHeight + 50 ) {
-        $('.top-bar').css( 'top', '0px' );
+        $('.top-bar').css( 'top', '0px' )
         primaryNav
           .removeClass('nav-open')
-          .addClass('nav-closed');
-        menuIcon.removeClass('page-header__navigation__item--menu--active');
+          .addClass('nav-closed')
+        menuIcon.removeClass('page-header__navigation__item--menu--active')
       }
       if ( $(window).scrollTop() < 100 ) {
-        $('.top-bar').css( 'top', '-53px' );
+        $('.top-bar').css( 'top', '-53px' )
       }
-    });
+    })
   </script>
 
 </body>
