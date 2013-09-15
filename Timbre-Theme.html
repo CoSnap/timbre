@@ -23,7 +23,7 @@
 
   <!-- Search Engine Stuff -->
   {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
-  <meta name="author" content="" />
+  <meta name="author" content="{Title}" />
   <meta name="robots" content="all" />
 
   <!-- Facebook Meta -->
@@ -521,6 +521,7 @@
   }
 
   .text-post,
+  .answer-post,
   .post-photo,
   .photo-set-post,
   .quote-post,
@@ -567,7 +568,6 @@
     width: 100%;
     height: 100%;
   }
-
 
   /* Photo Post */
 
@@ -1249,6 +1249,71 @@
 
           </div><!-- End Text Post -->
         {/block:Text}
+
+<!-- ---------------------------------------------------------------------------
+  Answer Post
+---------------------------------------------------------------------------- -->
+
+        {block:Answer}
+          <div class="answer-post">
+
+            <div class="copy">
+              <blockquote class="big-quote">{Asker} Asked</blockquote>
+              <span class="Question"><span class="QuestionHighlight">Question</span>{Question}</span>
+              <span class="Answer"><span class="QuestionHighlight">Answer</span>{Answer}</span>
+            </div><!-- End Copy -->
+
+            <div class="meta-data">
+              <ul>
+                {block:Date}
+                <li>
+                  <a class="date" href="{Permalink}" title="Date Posted">
+                    {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                  </a><!-- End Date Posted Link -->
+                </li><!-- End Date Posted Wrapper -->
+                {/block:Date}
+                {block:RebloggedFrom}
+                <li>
+                  <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
+                    Reblogged From {ReblogParentName}
+                  </a><!-- End Reblog From Link -->
+                </li><!-- End Rebloged From Wrapper -->
+                {/block:RebloggedFrom}
+                {block:NoteCount}
+                <li>
+                  <a class="notes" href="{Permalink}" title="Notes">
+                    {NoteCount} likes
+                  </a><!-- End Notes Link -->
+                </li><!-- End Notes Wrapper -->
+                {/block:NoteCount}
+
+                {block:HasTags}
+                <div class="tags-list">
+                  {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+                </div><!-- End Post Tags -->
+                {/block:HasTags}
+
+
+                <div class="reblog-button">
+                  {ReblogButton}
+                </div>
+                <div class="short-link-button-wrapper">
+                  <div class="short-link">Shortcode</div>
+                  <div class="short-link-dropdown">
+                    <span class="short-link-dropdown-arrow"></span>
+                    <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                  </div>
+                </div>
+              </ul>
+            </div><!-- End Post Meta -->
+
+            <div class="social-button">
+              <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+            </div><!-- End Social Buttons -->
+
+          </div><!-- End Answer Post -->
+        {/block:Answer}
 
 <!-- ---------------------------------------------------------------------------
   Photo Post
