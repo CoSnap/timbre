@@ -23,7 +23,7 @@
 
   <!-- Search Engine Stuff -->
   {block:Description}<meta name="description" content="{MetaDescription}" />{/block:Description}
-  <meta name="author" content="" />
+  <meta name="author" content="{Title}" />
   <meta name="robots" content="all" />
 
   <!-- Facebook Meta -->
@@ -50,7 +50,8 @@
     font-size: 16px;
     color: #7f7f7f;
     background: #f6f3ef;
-    line-height: 24px
+    line-height: 24px;
+    -webkit-text-size-adjust: none;
   }
 
   a:link,
@@ -60,7 +61,6 @@
   }
 
   /* --- Typography --- */
-
 
   h1 {
     font-family: 'Droid Serif', serif;
@@ -77,6 +77,17 @@
     font-size: 42px;
     line-height: 54px;
     color: #073f69;
+  }
+
+  h2 a:link,
+  h2 a:visited {
+    color: #073f69;
+    text-decoration: none;
+  }
+
+  h2 a:hover {
+    text-decoration: underline;
+    border-bottom: 2px solid #073f69;
   }
 
   h3 {
@@ -163,7 +174,6 @@
     Header
   ========================================================*/
 
-
   a.page-header__title__link {
     display: block;
     float: left;
@@ -196,7 +206,6 @@
   .page-header__navigation__item:hover {
     border: 1px solid #f65700;
     background-color: #f65700;
-
   }
 
   .page-header__navigation__link {
@@ -216,6 +225,8 @@
 
   .page-header__navigation__item--menu--active {
     background-position: -41px 12px;
+    background-color: #f65700;
+    border: 1px solid #f65700;
   }
 
   .page-header__navigation__item--search {
@@ -246,16 +257,75 @@
   }
 
   .page-header__search {
+    width: 180px;
     display: none;
   }
 
-  .nav-open {
-    -webkit-transform: translate3d(-350px, 0, 0);
-    border-right: 4px solid #f1eeea;
+  .page-header__search__open {
+    width: 180px;
+    transition: width 0.3s;
   }
 
-  .nav-closed {
-    -webkit-transform: translate3d(-0px, 0, 0);
+  .page-header__search__close {
+    width: 43px;
+    transition: width 0.3s;
+  }
+
+  .page-header__search__open .page-header__search {
+    display: block;
+  }
+
+  .page-header__search__open:hover {
+    background-color: transparent;
+    background-position: 9px 7px;
+  }
+
+  .SearchBox {
+    border: none;
+    background: none;
+    padding: 13px 0px 13px 45px;
+    font-size: 13px;
+    width: 135px;
+    outline: none;
+    color: #7f7f7f;
+  }
+
+  /* --- @Media Palm --- */
+  @media (max-width: 799px) {
+    .page-header__navigation {
+      width: 100%;
+      text-align: center;
+    }
+    .page-header__navigation__item {
+      float: none;
+      display: inline-block;
+      margin: 0 5px;
+    }
+    .page-header__title,
+    .page-header__title__link {
+      width: 100%;
+      text-align: center;
+    }
+    .page-header__navigation__item--search {
+      display: none;
+    }
+
+    a.page-header__title__link:hover {
+      border-bottom: 3px solid transparent
+    }
+
+  }
+
+  /* Desktop and Lap */
+  @media (min-width: 800px) {
+    .nav-open {
+      -webkit-transform: translate3d(-350px, 0, 0);
+      border-right: 4px solid #f1eeea;
+    }
+
+    .nav-closed {
+      -webkit-transform: translate3d(-0px, 0, 0);
+    }
   }
 
  /* --- Top Bar --- */
@@ -314,27 +384,30 @@
   }
 
   .top-bar__icon--archive {
-    background-position: -70px -53px;
+    background-position: 7px 7px;
+    background-image: url('http://static.tumblr.com/ubkenek/84Jmt29ai/archive-icon-small.png');
   }
 
   a.top-bar__icon--archive:hover {
-    background-position: -104px -53px;
+    background-position: -27px 7px;
   }
 
   .top-bar__icon--search {
-    background-position: -141px -53px;
+    background-image: url('http://static.tumblr.com/ubkenek/vkVmt29ju/search-icon-small.png');
+    background-position: 7px 6px;
   }
 
   a.top-bar__icon--search:hover {
-    background-position: -174px -53px;
+    background-position: -26px 6px;
   }
 
   .top-bar__icon--menu {
-    background-position: -209px -53px;
+    background-image: url('http://static.tumblr.com/ubkenek/KVEmt29n3/menu-icon-small.png');
+    background-position: 7px 10px;
   }
 
   a.top-bar__icon--menu:hover {
-    background-position: -241px -53px;
+    background-position: -25px 10px;
   }
 
   /*========================================================
@@ -350,48 +423,14 @@
     padding: 50px 0px 30px;
   }
 
-  .side-bar__nav{
-    border-bottom: #dddad7 1px solid ;
-  }
-
-  .side-bar__nav a {
-    font-family: 'Droid Sans', sans-serif;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 15px 30px 15px 30px;
-    border-top: #dddad7 1px solid;
-    display: block;
-    width: 290px;
-    background-image: url('http://static.tumblr.com/kc8g33y/BdKmqg3yp/icons.png');
-    background-repeat: no-repeat;
-    background-position-x: 290px;
-    background-position-y: -146px;
-    -moz-transition: all 0.2s;
-    -webkit-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-    transition-timing-function: ease;
-  }
-
-  .side-bar__nav a:hover {
-    background-color: #f65700;
-    color: #ffffff;
-    text-decoration: none;
-    background-position-x: 270px;
-    background-position-y: -146px;
-    border-top: #f65700 1px solid;
-  }
-
   .portrait {
     border-radius: 50%;
     overflow: hidden;
     display: block;
-    margin: 0 auto;
     border: 6px solid white;
   }
 
   .description {
-    margin: 0 30px 40px 30px;
     font-size: 14px;
     line-height: 1.6;
   }
@@ -402,7 +441,98 @@
     font-family: 'Droid Sans', sans-serif;
     color: #073f69;
     font-weight: 700;
-    margin: 40px 30px;
+  }
+
+  .side-bar__nav a {
+    font-family: 'Droid Sans', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  /* Desktop and Lap */
+  @media (min-width: 800px) {
+    .side-bar__nav{
+      border-bottom: #dddad7 1px solid;
+    }
+
+    .portrait {
+      margin: 0 auto;
+    }
+
+    .description {
+      margin: 0 30px 40px 30px;
+    }
+
+    .side-bar-title {
+      margin: 40px 30px;
+    }
+
+    .side-bar__nav a {
+      padding: 15px 30px 15px 30px;
+      border-top: #dddad7 1px solid;
+      display: block;
+      width: 290px;
+      background-image: url('http://static.tumblr.com/ubkenek/0RQmt29vc/hand-icon.png');
+      background-repeat: no-repeat;
+      background-position-x: 390px;
+      background-position-y: 18px;
+      -moz-transition: all 0.2s;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+      transition-timing-function: ease;
+    }
+
+    .side-bar__nav a:hover {
+      background-color: #f65700;
+      color: #ffffff;
+      text-decoration: none;
+      background-position-x: 290px;
+      background-position-y: 18px;
+      border-top: #f65700 1px solid;
+    }
+  }
+
+  @media (max-width: 799px) { /* --- @Media Palm --- */
+    .portrait {
+      display: none;
+    }
+
+    .side-bar {
+      width: 96%;
+      padding: 2%;
+    }
+
+    .description {
+      width: 100%;
+      margin: 0;
+      float: left;
+      margin: 18px 0;
+      text-align: center;
+    }
+
+    .side-bar-title {
+      text-transform: center;
+      margin: 29px 20px 0;
+    }
+
+    .side-bar__nav {
+      text-align: center;
+    }
+
+    .side-bar__nav li {
+      display: inline-block;
+      margin: 0 5px 10px 5px;
+      background: #f65700;
+      padding: 1px 7px;
+      border-radius: 3px;
+    }
+
+    .side-bar__nav li a {
+      color: #f6f3ef;
+      font-size: 12px;
+    }
+
   }
 
   /*========================================================
@@ -422,6 +552,7 @@
   }
 
   .text-post,
+  .answer-post,
   .post-photo,
   .photo-set-post,
   .quote-post,
@@ -469,9 +600,31 @@
     height: 100%;
   }
 
+  /* Answer Post */
 
-  /* Photo Post */
+  .question,
+  .answer {
+    width: 100%;
+    display: block;
+    float: left;
+    clear: both;
+  }
 
+  .question {
+    margin: 0 0 10px 0;
+  }
+
+  .question-content {
+    width: 100%;
+    clear: both;
+    float: left;
+  }
+
+  .question-title {
+    color: #073f69;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+  }
 
   /* Quote Post */
 
@@ -565,12 +718,6 @@
     float: right;
   }
 
-
-  /*========================================================
-    Notes
-  ========================================================*/
-
-
   /*========================================================
     Meta
   ========================================================*/
@@ -621,7 +768,7 @@
   }
 
   a.date{
-    background-image: url(http://static.tumblr.com/ubkenek/gG2mt27t3/clock-small.png);
+    background-image: url('http://static.tumblr.com/ubkenek/gG2mt27t3/clock-small.png');
     background-position: 0;
   }
 
@@ -730,7 +877,7 @@
 
   .page-footer {
     font-family: 'Droid Sans', sans-serif;
-    font-size:  12px;
+    font-size: 12px;
   }
 
   .copyright {
@@ -766,7 +913,7 @@
 
   .post-notes .note:last-of-type {
     border-bottom: none;
-    margin: 0 ;
+    margin: 0;
   }
 
   .post-notes a:hover {
@@ -775,6 +922,28 @@
 
   .post-notes img {
     display: none;
+  }
+
+  .fb-like,
+  .twitter-share-button {
+    float: left;
+    margin: 0 10px 0 0;
+  }
+
+  .post-footer {
+    width: 100%;
+    float: left;
+    font-size: 13px;
+  }
+
+  .post-footer a {
+    float: left;
+    clear: both;
+    color: #9c9c9b;
+  }
+
+  .content-source a {
+    text-decoration: none;
   }
 
   /*========================================================
@@ -863,11 +1032,6 @@
     Media Queries
   ========================================================*/
 
-  /* --- @Media Retina --- */
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-
-  }
-
   @media screen and (min-width: 555px){
     .caption {
       width: 500px;
@@ -885,6 +1049,7 @@
       margin: 0 0 60px 0;
     }
     .social-button {
+      width: 500px;
       float: right;
       clear: both;
       margin-top: 15px;
@@ -917,7 +1082,6 @@
     }
   }
 
-
   @media screen and (min-width: 680px){
     .page-header__navigation{
       float: right;
@@ -932,7 +1096,7 @@
     }
   }
 
-  @media screen and (max-width: 680px){
+  @media screen and (max-width: 799px){
     h1 {
       font-size: 40px;
     }
@@ -952,14 +1116,22 @@
     }
   }
 
-  @media (min-width: 555px) and (max-width: 799px) { /* --- @Media Palm --- */
+  @media (max-width: 799px) { /* --- @Media Palm --- */
     .copy {
-      width: 500px;
-      margin: auto;
+      max-width: 500px;
+      float: left;
+      clear: both;
     }
     .meta-data {
-      width: 500px;
-      margin: 0 auto 40px;
+      max-width: 500px;
+      float: left;
+      clear: both;
+      margin: 0 0 40px;
+    }
+    .post-footer {
+      width: auto;
+      clear: both;
+      margin: 0 0 40px 0;
     }
   }
 
@@ -971,6 +1143,9 @@
     }
     .meta-data {
       width: 240px;
+    }
+    .social-button {
+      width: 500px;
     }
   }
 
@@ -984,12 +1159,43 @@
     .meta-data {
       width: 280px;
     }
+    .social-button {
+      margin-right: 340px;
+    }
   }
 
   @media (min-width: 800px) {
     .meta-data {
       float: left;
       margin: 0 0 40px 0;
+    }
+  }
+
+  /* --- @Media Retina --- */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .page-header__navigation__item--menu {
+      background-image: url('');
+      background-size: 25px 17px;
+    }
+
+    .page-header__navigation__item--menu {
+      background-image: url('');
+      background-size: ;
+    }
+
+    .page-header__navigation__item--search {
+      background-image: url('');
+      background-size: 25px 17px;
+    }
+
+    .page-header__navigation__item--archive {
+      background-image: url('');
+      background-size: 25px 17px;
+    }
+
+    .page-header__navigation__item--random {
+      background-image: url('');
+      background-size: 25px 17px;
     }
   }
 
@@ -1019,7 +1225,7 @@
 
   <div class="side-bar">
     <img class="portrait" src="{PortraitURL-128}" />
-    <p class="side-bar-title">{Title}</p>
+    <p class="side-bar-title">About</p>
 
     {block:Description}
       <p class="description">{Description}</p>
@@ -1043,9 +1249,9 @@
     <div class="content-wrapper">
       <a href="#" class="top-bar__title">{Title}</a>
       <a class="top-bar__icon top-bar__icon--menu" href="#"></a>
-      <a class="top-bar__icon top-bar__icon--search" href="#"></a>
       <a class="top-bar__icon top-bar__icon--archive" href="/archive"></a>
       <a class="top-bar__icon top-bar__icon--random" href="/random"></a>
+      <a class="top-bar__icon top-bar__icon--search js-top-bar__icon--search" href="#"></a>
     </div>
   </nav>
 
@@ -1059,11 +1265,12 @@
             <li class="page-header__navigation__item page-header__navigation__item--menu js-page-header__navigation__item--menu"></li>
             <li class="page-header__navigation__item page-header__navigation__item--archive"> <a class="page-header__navigation__link" href="/archive"></a> </li>
             <li class="page-header__navigation__item page-header__navigation__item--random"> <a class="page-header__navigation__link" href="/random"></a> </li>
-            <li class="page-header__navigation__item page-header__navigation__item--search"></li>
+            <li class="page-header__navigation__item page-header__navigation__item--search js-page-header__navigation__item--search">
+              <form class="page-header__search" action="/search" method="get" >
+                <input id="Search" class="SearchBox" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
+              </form>
+            </li>
           </ul>
-          <form class="page-header__search" action="/search" method="get" >
-            <input id="Search" class="SearchBox" type="text" name="q" value="{SearchQuery}" placeholder="Search"/>
-          </form>
         </nav>
 
         <a class="page-header__title__link" href="/"><h1 class="page-header__title" title="{Title}">{Title}</h1></a>
@@ -1085,6 +1292,32 @@
             <div class="copy">
               {block:Title}<h2><a class="post-title" href="{Permalink}">{Title}</a></h2>{/block:Title}
               <p>{Body}</p>
+
+              <div class="post-footer">
+                {block:ContentSource}
+                  <div class="content-source">
+                    <a href="{SourceURL}">
+                      {lang:Source}:
+                      {block:SourceLogo}
+                        <img src="{BlackLogoURL}" width="{LogoWidth}"
+                        height="{LogoHeight}" alt="{SourceTitle}" />
+                      {/block:SourceLogo}
+                      {block:NoSourceLogo}
+                        {SourceTitle}
+                      {/block:NoSourceLogo}
+                    </a>
+                  </div>
+                {/block:ContentSource}
+                <!-- End Content Source -->
+
+                {block:RebloggedFrom}
+                  <div class="reblogged-from">
+                    <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                    <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                  </div>
+                {/block:RebloggedFrom}
+                <!-- End Reblogged From -->
+              </div>
             </div>
 
             <div class="meta-data">
@@ -1096,13 +1329,6 @@
                   </a><!-- End Date Posted Link -->
                 </li><!-- End Date Posted Wrapper -->
                 {/block:Date}
-                {block:RebloggedFrom}
-                <li>
-                  <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                    Reblogged From {ReblogParentName}
-                  </a><!-- End Reblog From Link -->
-                </li><!-- End Rebloged From Wrapper -->
-                {/block:RebloggedFrom}
                 {block:NoteCount}
                 <li>
                   <a class="notes" href="{Permalink}" title="Notes">
@@ -1140,6 +1366,94 @@
         {/block:Text}
 
 <!-- ---------------------------------------------------------------------------
+  Answer Post
+---------------------------------------------------------------------------- -->
+
+        {block:Answer}
+          <div class="answer-post">
+
+            <div class="copy">
+              <blockquote class="big-quote">{Asker} Asked:</blockquote>
+              <span class="question">
+                <span class="question-title">Question:</span>
+                <span class="question-content">{Question}</span>
+              </span>
+              <span class="answer">
+                <span class="question-title">Answer:</span>
+                {Answer}
+              </span>
+
+              <div class="post-footer">
+                {block:ContentSource}
+                  <div class="content-source">
+                    <a href="{SourceURL}">
+                      {lang:Source}:
+                      {block:SourceLogo}
+                        <img src="{BlackLogoURL}" width="{LogoWidth}"
+                        height="{LogoHeight}" alt="{SourceTitle}" />
+                      {/block:SourceLogo}
+                      {block:NoSourceLogo}
+                        {SourceTitle}
+                      {/block:NoSourceLogo}
+                    </a>
+                  </div>
+                {/block:ContentSource}
+                <!-- End Content Source -->
+
+                {block:RebloggedFrom}
+                  <div class="reblogged-from">
+                    <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                    <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                  </div>
+                {/block:RebloggedFrom}
+                <!-- End Reblogged From -->
+              </div>
+            </div><!-- End Copy -->
+
+            <div class="meta-data">
+              <ul>
+                {block:Date}
+                <li>
+                  <a class="date" href="{Permalink}" title="Date Posted">
+                    {Month} {DayOfMonth}{DayOfMonthSuffix} {Year}
+                  </a><!-- End Date Posted Link -->
+                </li><!-- End Date Posted Wrapper -->
+                {/block:Date}
+                {block:NoteCount}
+                <li>
+                  <a class="notes" href="{Permalink}" title="Notes">
+                    {NoteCount} likes
+                  </a><!-- End Notes Link -->
+                </li><!-- End Notes Wrapper -->
+                {/block:NoteCount}
+                {block:HasTags}
+                <div class="tags-list">
+                  {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
+                </div><!-- End Post Tags -->
+                {/block:HasTags}
+
+                <div class="reblog-button">
+                  {ReblogButton}
+                </div>
+                <div class="short-link-button-wrapper">
+                  <div class="short-link">Shortcode</div>
+                  <div class="short-link-dropdown">
+                    <span class="short-link-dropdown-arrow"></span>
+                    <input type="text" onClick="this.select();" value="{ShortURL}"/>
+                  </div>
+                </div>
+              </ul>
+            </div><!-- End Post Meta -->
+
+            <div class="social-button">
+              <div class="fb-like" data-href="{Permalink}" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-url="{Permalink}" data-text="{Title}">Tweet</a>
+            </div><!-- End Social Buttons -->
+
+          </div><!-- End Answer Post -->
+        {/block:Answer}
+
+<!-- ---------------------------------------------------------------------------
   Photo Post
 ---------------------------------------------------------------------------- -->
 
@@ -1156,6 +1470,32 @@
               {block:Caption}
                 <div class="caption">{Caption}</div>
               {/block:Caption}
+
+              <div class="post-footer">
+                {block:ContentSource}
+                  <div class="content-source">
+                    <a href="{SourceURL}">
+                      {lang:Source}:
+                      {block:SourceLogo}
+                        <img src="{BlackLogoURL}" width="{LogoWidth}"
+                        height="{LogoHeight}" alt="{SourceTitle}" />
+                      {/block:SourceLogo}
+                      {block:NoSourceLogo}
+                        {SourceTitle}
+                      {/block:NoSourceLogo}
+                    </a>
+                  </div>
+                {/block:ContentSource}
+                <!-- End Content Source -->
+
+                {block:RebloggedFrom}
+                  <div class="reblogged-from">
+                    <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                    <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                  </div>
+                {/block:RebloggedFrom}
+                <!-- End Reblogged From -->
+              </div>
             </div>
 
             <div class="meta-data">
@@ -1167,13 +1507,6 @@
                   </a><!-- End Date Posted Link -->
                 </li><!-- End Date Posted Wrapper -->
                 {/block:Date}
-                {block:RebloggedFrom}
-                <li>
-                  <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                    Reblogged From {ReblogParentName}
-                  </a><!-- End Reblog From Link -->
-                </li><!-- End Rebloged From Wrapper -->
-                {/block:RebloggedFrom}
                 {block:NoteCount}
                 <li>
                   <a class="notes" href="{Permalink}" title="Notes">
@@ -1223,6 +1556,32 @@
               {block:Caption}
                 <div class="caption">{Caption}</div>
               {/block:Caption}
+
+              <div class="post-footer">
+                {block:ContentSource}
+                  <div class="content-source">
+                    <a href="{SourceURL}">
+                      {lang:Source}:
+                      {block:SourceLogo}
+                        <img src="{BlackLogoURL}" width="{LogoWidth}"
+                        height="{LogoHeight}" alt="{SourceTitle}" />
+                      {/block:SourceLogo}
+                      {block:NoSourceLogo}
+                        {SourceTitle}
+                      {/block:NoSourceLogo}
+                    </a>
+                  </div>
+                {/block:ContentSource}
+                <!-- End Content Source -->
+
+                {block:RebloggedFrom}
+                  <div class="reblogged-from">
+                    <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                    <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                  </div>
+                {/block:RebloggedFrom}
+                <!-- End Reblogged From -->
+              </div>
             </div>
 
             <div class="meta-data">
@@ -1234,13 +1593,6 @@
                   </a><!-- End Date Posted Link -->
                 </li><!-- End Date Posted Wrapper -->
                 {/block:Date}
-                {block:RebloggedFrom}
-                <li>
-                  <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                    Reblogged From {ReblogParentName}
-                  </a><!-- End Reblog From Link -->
-                </li><!-- End Rebloged From Wrapper -->
-                {/block:RebloggedFrom}
                 {block:NoteCount}
                 <li>
                   <a class="notes" href="{Permalink}" title="Notes">
@@ -1286,6 +1638,32 @@
           <div class="copy">
             {Photoset-500}
             <p>{Caption}</p>
+
+            <div class="post-footer">
+              {block:ContentSource}
+                <div class="content-source">
+                  <a href="{SourceURL}">
+                    {lang:Source}:
+                    {block:SourceLogo}
+                      <img src="{BlackLogoURL}" width="{LogoWidth}"
+                      height="{LogoHeight}" alt="{SourceTitle}" />
+                    {/block:SourceLogo}
+                    {block:NoSourceLogo}
+                      {SourceTitle}
+                    {/block:NoSourceLogo}
+                  </a>
+                </div>
+              {/block:ContentSource}
+              <!-- End Content Source -->
+
+              {block:RebloggedFrom}
+                <div class="reblogged-from">
+                  <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                  <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                </div>
+              {/block:RebloggedFrom}
+              <!-- End Reblogged From -->
+            </div>
           </div>
 
           <div class="meta-data">
@@ -1297,13 +1675,6 @@
                 </a><!-- End Date Posted Link -->
               </li><!-- End Date Posted Wrapper -->
               {/block:Date}
-              {block:RebloggedFrom}
-              <li>
-                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                  Reblogged From {ReblogParentName}
-                </a><!-- End Reblog From Link -->
-              </li><!-- End Rebloged From Wrapper -->
-              {/block:RebloggedFrom}
               {block:NoteCount}
               <li>
                 <a class="notes" href="{Permalink}" title="Notes">
@@ -1311,14 +1682,11 @@
                 </a><!-- End Notes Link -->
               </li><!-- End Notes Wrapper -->
               {/block:NoteCount}
-
               {block:HasTags}
               <div class="tags-list">
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-
-
               <div class="reblog-button">
                 {ReblogButton}
               </div>
@@ -1349,6 +1717,32 @@
           <div class="copy">
             <blockquote class="big-quote">"{Quote}"</blockquote>
             {block:Source}<p>&#8212; {Source}</p>{/block:Source}
+
+            <div class="post-footer">
+                {block:ContentSource}
+                  <div class="content-source">
+                    <a href="{SourceURL}">
+                      {lang:Source}:
+                      {block:SourceLogo}
+                        <img src="{BlackLogoURL}" width="{LogoWidth}"
+                        height="{LogoHeight}" alt="{SourceTitle}" />
+                      {/block:SourceLogo}
+                      {block:NoSourceLogo}
+                        {SourceTitle}
+                      {/block:NoSourceLogo}
+                    </a>
+                  </div>
+                {/block:ContentSource}
+                <!-- End Content Source -->
+
+                {block:RebloggedFrom}
+                  <div class="reblogged-from">
+                    <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                    <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                  </div>
+                {/block:RebloggedFrom}
+                <!-- End Reblogged From -->
+              </div>
           </div><!-- End Copy -->
 
           <div class="meta-data">
@@ -1360,13 +1754,6 @@
                 </a><!-- End Date Posted Link -->
               </li><!-- End Date Posted Wrapper -->
               {/block:Date}
-              {block:RebloggedFrom}
-              <li>
-                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                  Reblogged From {ReblogParentName}
-                </a><!-- End Reblog From Link -->
-              </li><!-- End Rebloged From Wrapper -->
-              {/block:RebloggedFrom}
               {block:NoteCount}
               <li>
                 <a class="notes" href="{Permalink}" title="Notes">
@@ -1374,14 +1761,11 @@
                 </a><!-- End Notes Link -->
               </li><!-- End Notes Wrapper -->
               {/block:NoteCount}
-
               {block:HasTags}
               <div class="tags-list">
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-
-
               <div class="reblog-button">
                 {ReblogButton}
               </div>
@@ -1412,6 +1796,32 @@
           <div class="copy">
             <h2><a class="link-post__link" href="{URL}" {Target}>{Name}</a></h2>
             {block:Description}<p>{Description}</p>{/block:Description}
+
+            <div class="post-footer">
+              {block:ContentSource}
+                <div class="content-source">
+                  <a href="{SourceURL}">
+                    {lang:Source}:
+                    {block:SourceLogo}
+                      <img src="{BlackLogoURL}" width="{LogoWidth}"
+                      height="{LogoHeight}" alt="{SourceTitle}" />
+                    {/block:SourceLogo}
+                    {block:NoSourceLogo}
+                      {SourceTitle}
+                    {/block:NoSourceLogo}
+                  </a>
+                </div>
+              {/block:ContentSource}
+              <!-- End Content Source -->
+
+              {block:RebloggedFrom}
+                <div class="reblogged-from">
+                  <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                  <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                </div>
+              {/block:RebloggedFrom}
+              <!-- End Reblogged From -->
+            </div>
           </div>
 
           <div class="meta-data">
@@ -1423,13 +1833,6 @@
                 </a><!-- End Date Posted Link -->
               </li><!-- End Date Posted Wrapper -->
               {/block:Date}
-              {block:RebloggedFrom}
-              <li>
-                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                  Reblogged From {ReblogParentName}
-                </a><!-- End Reblog From Link -->
-              </li><!-- End Rebloged From Wrapper -->
-              {/block:RebloggedFrom}
               {block:NoteCount}
               <li>
                 <a class="notes" href="{Permalink}" title="Notes">
@@ -1494,13 +1897,6 @@
                 </a><!-- End Date Posted Link -->
               </li><!-- End Date Posted Wrapper -->
               {/block:Date}
-              {block:RebloggedFrom}
-              <li>
-                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                  Reblogged From {ReblogParentName}
-                </a><!-- End Reblog From Link -->
-              </li><!-- End Rebloged From Wrapper -->
-              {/block:RebloggedFrom}
               {block:NoteCount}
               <li>
                 <a class="notes" href="{Permalink}" title="Notes">
@@ -1508,13 +1904,11 @@
                 </a><!-- End Notes Link -->
               </li><!-- End Notes Wrapper -->
               {/block:NoteCount}
-
               {block:HasTags}
               <div class="tags-list">
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-
               <div class="reblog-button">
                 {ReblogButton}
               </div>
@@ -1550,6 +1944,32 @@
 
           <div class="copy">
             {block:Caption}<p>{Caption}</p>{/block:Caption}
+
+            <div class="post-footer">
+              {block:ContentSource}
+                <div class="content-source">
+                  <a href="{SourceURL}">
+                    {lang:Source}:
+                    {block:SourceLogo}
+                      <img src="{BlackLogoURL}" width="{LogoWidth}"
+                      height="{LogoHeight}" alt="{SourceTitle}" />
+                    {/block:SourceLogo}
+                    {block:NoSourceLogo}
+                      {SourceTitle}
+                    {/block:NoSourceLogo}
+                  </a>
+                </div>
+              {/block:ContentSource}
+              <!-- End Content Source -->
+
+              {block:RebloggedFrom}
+                <div class="reblogged-from">
+                  <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                  <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                </div>
+              {/block:RebloggedFrom}
+              <!-- End Reblogged From -->
+            </div>
           </div>
 
           <div class="meta-data">
@@ -1561,13 +1981,6 @@
                 </a><!-- End Date Posted Link -->
               </li><!-- End Date Posted Wrapper -->
               {/block:Date}
-              {block:RebloggedFrom}
-              <li>
-                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                  Reblogged From {ReblogParentName}
-                </a><!-- End Reblog From Link -->
-              </li><!-- End Rebloged From Wrapper -->
-              {/block:RebloggedFrom}
               {block:NoteCount}
               <li>
                 <a class="notes" href="{Permalink}" title="Notes">
@@ -1575,13 +1988,11 @@
                 </a><!-- End Notes Link -->
               </li><!-- End Notes Wrapper -->
               {/block:NoteCount}
-
               {block:HasTags}
               <div class="tags-list">
                 {block:Tags}<a class="post-tag" href="{TagURL}">{Tag}</a>{/block:Tags}
               </div><!-- End Post Tags -->
               {/block:HasTags}
-
               <div class="reblog-button">
                 {ReblogButton}
               </div>
@@ -1634,6 +2045,31 @@
 
             {block:Caption}{Caption}{/block:Caption}
 
+            <div class="post-footer">
+              {block:ContentSource}
+                <div class="content-source">
+                  <a href="{SourceURL}">
+                    {lang:Source}:
+                    {block:SourceLogo}
+                      <img src="{BlackLogoURL}" width="{LogoWidth}"
+                      height="{LogoHeight}" alt="{SourceTitle}" />
+                    {/block:SourceLogo}
+                    {block:NoSourceLogo}
+                      {SourceTitle}
+                    {/block:NoSourceLogo}
+                  </a>
+                </div>
+              {/block:ContentSource}
+              <!-- End Content Source -->
+
+              {block:RebloggedFrom}
+                <div class="reblogged-from">
+                  <a href="{ReblogRootURL}">Content source {ReblogRootName}</a>
+                  <a href="{ReblogParentURL}">Reblogged from {ReblogParentName}</a>
+                </div>
+              {/block:RebloggedFrom}
+              <!-- End Reblogged From -->
+            </div>
           </div>
 
           <div class="meta-data">
@@ -1645,13 +2081,6 @@
                 </a><!-- End Date Posted Link -->
               </li><!-- End Date Posted Wrapper -->
               {/block:Date}
-              {block:RebloggedFrom}
-              <li>
-                <a class="reblogs" href="{ReblogParentURL}" title="{ReblogParentTitle}">
-                  Reblogged From {ReblogParentName}
-                </a><!-- End Reblog From Link -->
-              </li><!-- End Rebloged From Wrapper -->
-              {/block:RebloggedFrom}
               {block:NoteCount}
               <li>
                 <a class="notes" href="{Permalink}" title="Notes">
@@ -1752,7 +2181,7 @@
 
       <footer class="page-footer">
         <div class="footer-links">View <a title="archive" href="/archive">archive</a> posts or view a <a title="random post" href="/random">random</a> post.</div>
-        <div class="copyright">Copyright © 2013. Designed by <a href="http://synthmedia.co.uk">Synth Media</a>. Built in Bristol, England.</div>
+        <div class="copyright">Copyright © 2013. Designed by <a href="http://synthmedia.co.uk" target="_blank">Synth Media</a>. Built in Bristol, England. <a href="mailto:feedback@synthmedia.co.uk">Send Feedback</a>.</div>
       </footer>
     </div>
   </div>
@@ -1766,21 +2195,49 @@
       , menuIcon = $('.js-page-header__navigation__item--menu')
       , sideBarHeight = $('.side-bar').height()
       , photoPost = $('.post-photo')
+      , windowWidth = $(document).width()
+      , sideBarHeight = $('.side-bar').outerHeight()
+      , menuOpen = false
+      , searchOpen = false
+      , shortCodeOpen = false
 
     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
-    $('.js-page-header__navigation__item--menu').on('click', function(event){
-      if( primaryNav.hasClass('nav-open') ){
-        primaryNav
-          .removeClass('nav-open')
-          .addClass('nav-closed')
-        menuIcon.removeClass('page-header__navigation__item--menu--active')
+    function openCloseNav() {
+      if ( windowWidth < 799 ) {
+        sideBarHeight = $('.side-bar').outerHeight()
+        if ( !menuOpen ) {
+          menuOpen = true
+          $('.content').css( 'margin-top', sideBarHeight )
+          $('.content-wrapper').css('border-top','2px solid #dddad7')
+          menuIcon.addClass('page-header__navigation__item--menu--active')
+        } else if ( menuOpen ) {
+          menuOpen = false
+          $('.content').css( 'margin-top', 0 )
+          $('.content-wrapper').css('border-top','none')
+          menuIcon.removeClass('page-header__navigation__item--menu--active')
+        }
       } else {
-        primaryNav
-          .addClass('nav-open')
-          .removeClass('nav-closed')
-        menuIcon.addClass('page-header__navigation__item--menu--active')
+        if ( primaryNav.hasClass('nav-open') ) {
+          primaryNav
+            .removeClass('nav-open')
+            .addClass('nav-closed')
+          menuIcon.removeClass('page-header__navigation__item--menu--active')
+        } else {
+          primaryNav
+            .addClass('nav-open')
+            .removeClass('nav-closed')
+          menuIcon.addClass('page-header__navigation__item--menu--active')
+        }
       }
+    }
+
+    $(window).resize(function () {
+      windowWidth = $(document).width()
+    })
+
+    $('.js-page-header__navigation__item--menu').on('click', function(event){
+      openCloseNav()
       event.preventDefault()
     })
 
@@ -1795,9 +2252,6 @@
     })
 
     // Short Link Drop Down.
-
-    var shortCodeOpen = false
-
     $('.short-link').on('click', function(event){
       if ( !shortCodeOpen ) {
         $(this).next('div').css('display','block')
@@ -1827,6 +2281,50 @@
         $('.top-bar').css( 'top', '-53px' )
       }
     })
+
+    // Search Toggle
+    function navSearch () {
+      var $search = $('.js-page-header__navigation__item--search')
+      if ( !searchOpen ) {
+        $search
+          .addClass('page-header__search__open')
+          .removeClass('page-header__search__close')
+        searchOpen = true
+      } else if ( searchOpen ) {
+        $search
+          .addClass('page-header__search__close')
+          .removeClass('page-header__search__open')
+        searchOpen = false
+      }
+    }
+
+    $('.js-page-header__navigation__item--search').on('click', function(event){
+      if ( !$(this).hasClass('page-header__search__open') ) {
+        primaryNav
+          .removeClass('nav-open')
+          .addClass('nav-closed')
+        menuIcon.removeClass('page-header__navigation__item--menu--active')
+        navSearch()
+        $('.SearchBox').focus()
+      }
+      event.preventDefault()
+    })
+
+    $('.js-top-bar__icon--search').on('click', function(event){
+      $('html, body').animate( { scrollTop:(0) }, 'fast', function() {
+        if ( !$(this).hasClass('page-header__search__open') ) {
+          navSearch()
+          $('.SearchBox').focus()
+        }
+      })
+      event.preventDefault()
+    })
+
+    $('.SearchBox').on('focusout', function(event){
+      navSearch()
+      event.preventDefault()
+    })
+
   </script>
 
 </body>
