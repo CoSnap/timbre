@@ -32,7 +32,7 @@ Timbre may be used by anyone for any purpose, in both a personal and commercial 
 
 ## Credits
 
-Timbre was created by [Magnus Erichsen](http://samstefan.co.uk) & [Sam Stefan](http://samstefan.co.uk).
+Timbre was created by [Magnus Erichsen](https://dribbble.com/Magsderich) & [Sam Stefan](http://samstefan.co.uk).
 
 ## Release History
 ---
