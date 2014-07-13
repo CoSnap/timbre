@@ -37,4 +37,5 @@ Timbre was created by [Magnus Erichsen](https://dribbble.com/Magsderich) & [Sam 
 ## Release History
 ---
 
+* v1.0.1 - Clicking on the body when the menu is open now closes the menu.
 * v1.0.0 - Initial release.

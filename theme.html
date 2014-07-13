@@ -6,7 +6,7 @@
 <head>
 
   <!--
-  Timbre - 1.0.0
+  Timbre - 1.0.1
   Designed by CoSnap
   cosnap.co.uk
   -->
@@ -2330,11 +2330,13 @@
         }
       } else {
         if ( primaryNav.hasClass('nav-open') ) {
+          menuOpen = false
           primaryNav
             .removeClass('nav-open')
             .addClass('nav-closed')
           menuIcon.removeClass('page-header__navigation__item--menu--active')
         } else {
+          menuOpen = true
           primaryNav
             .addClass('nav-open')
             .removeClass('nav-closed')
@@ -2342,6 +2344,19 @@
         }
       }
     }
+
+    $('body').on('click', function () {
+      if (menuOpen) {
+        openCloseNav()
+      }
+    })
+
+    $('.side-bar').on('click', function (event) {
+      event.stopPropagation()
+    })
+    $('.js-page-header__navigation__item--menu').on('click', function (event) {
+      event.stopPropagation()
+    })
 
     $(window).resize(function () {
       windowWidth = $(document).width()
