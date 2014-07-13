@@ -136,24 +136,24 @@
   /* --- Helpers --- */
 
   .clearfix:before,.clearfix:after{
-    content:" ";
-    display:table
+    content: "";
+    display: table;
   }
 
   .clearfix:after{
-    clear:both
+    clear: both;
   }
 
   .clearfix{
-    *zoom:1
+    *zoom: 1;
   }
 
   .pull-left {
-    float left
+    float: left;
   }
 
   .pull-right {
-    float right
+    float: right;
   }
 
   /* --- Structure --- */
@@ -246,7 +246,7 @@
   }
 
   .page-header__navigation__item--search:hover {
-    background-position: -31px 7px;
+    background-position: -30px 7px;
   }
 
   .page-header__navigation__item--archive {
@@ -1056,139 +1056,179 @@
   ========================================================*/
 
   @media screen and (min-width: 555px){
+
     .caption {
       width: 500px;
     }
+
     .reblog-button {
       margin-top: 60px;
     }
+
     .video-hero-wrapper {
       padding-bottom: 45px;
     }
+
     h2{
       margin: 0px 0px 60px 0px;
     }
+
     .post-photo .high-res-hero {
       margin: 0 0 60px 0;
     }
+
     .social-button {
       width: 500px;
       float: right;
       clear: both;
       margin-top: 15px;
     }
+
   }
 
   @media screen and (max-width: 554px){
+
     .caption {
       width: 100%;
     }
+
     .total-pages {
       display: none;
     }
+
     .reblog-button {
       margin-top: 10px;
     }
+
     .video-hero-wrapper {
       padding-bottom: 15px;
     }
-    h2{
+
+    h2 {
       margin: 0px 0px 30px 0px;
     }
+
     .post-photo .high-res-hero {
       margin: 0 0 30px 0;
     }
+
     .social-button {
       float: left;
       clear: both;
       margin-top: 55px;
     }
+
   }
 
   @media screen and (min-width: 680px){
+
     .page-header__navigation{
       float: right;
       margin: 3px 0 0 0;
     }
+
     .page-header {
       padding: 60px 0 50px 0;
       border-bottom: 2px solid #dddad7;
     }
+
     h1 {
       font-size: 60px;
     }
+
   }
 
   @media screen and (max-width: 799px){
+
     h1 {
       font-size: 40px;
     }
+
     .page-header__navigation{
       float: left;
       margin: 3px 0 30px 0;
     }
+
     .page-header {
       padding: 30px 0 50px 0;
       border-bottom: 2px solid #dddad7;
     }
+
     .page-header__title__link {
       clear: both;
     }
+
     .top-bar {
       display: none;
     }
+
   }
 
-  @media (max-width: 799px) { /* --- @Media Palm --- */
+  /* --- @Media Palm --- */
+  @media (max-width: 799px) {
+
     .copy {
       max-width: 500px;
       float: left;
       clear: both;
     }
+
     .meta-data {
       max-width: 500px;
       float: left;
       clear: both;
       margin: 0 0 40px;
     }
+
     .post-footer {
       width: auto;
       clear: both;
       margin: 0 0 40px 0;
     }
+
     iframe {
       height: 340px;
       border-radius: 3px;
     }
-  }
 
-  @media (min-width: 800px) and (max-width: 1179px) { /* --- @Media Lap --- */
+  }
+  /* --- @Media Lap --- */
+  @media (min-width: 800px) and (max-width: 1179px) {
+
     .copy{
       width: 500px;
       float: right;
       display: block;
     }
+
     .meta-data {
       width: 240px;
     }
+
     .social-button {
       width: 500px;
     }
+
   }
 
-  @media (min-width: 1180px) { /* --- @Media Desktop --- */
+  /* --- @Media Desktop --- */
+  @media (min-width: 1180px) {
+
     .copy{
       width: 500px;
       margin-right: 340px;
       float: right;
       display: block;
     }
+
     .meta-data {
       width: 280px;
     }
+
     .social-button {
       margin-right: 340px;
     }
+
   }
 
   @media (min-width: 800px) {
@@ -1206,9 +1246,21 @@
       background-position: 9px 13px
     }
 
+    .page-header__navigation__item--menu:hover {
+      background-position: -41px 13px;
+    }
+
+    .page-header__navigation__item--menu--active {
+      background-position: -41px 13px;
+    }
+
     .page-header__navigation__item--search {
       background-image: url('http://static.tumblr.com/ubkenek/XBkmt7yh9/search-icon_2x.png');
       background-size: 66px 27px;
+    }
+
+    .page-header__navigation__item--search:hover {
+      background-position: -31px 7px;
     }
 
     .page-header__navigation__item--archive {
@@ -1217,9 +1269,17 @@
       background-position: 9px 9px;
     }
 
+    .page-header__navigation__item--archive:hover {
+      background-position: -37px 9px;
+    }
+
     .page-header__navigation__item--random {
       background-image: url('http://static.tumblr.com/ubkenek/Kk7mt7zb4/random-icon_2x.png');
       background-size: 80px 20px;
+    }
+
+    .page-header__navigation__item--random:hover {
+      background-position: -45px 11px;
     }
 
     a.date {
